@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Login — Welder or Customer</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
   :root{
     --bg:#000;
     --card:#111;
@@ -18,84 +17,51 @@
     color:#fff;
     font-family: "Poppins", sans-serif;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    padding:20px;
+    gap:20px;
   }
 
-  .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 1000;
-  text-align: center;
-  margin-bottom: 0;
-  padding: 10px 0;
-  border-bottom: none;
-  background: none;
-  box-shadow: none;
-  pointer-events: none; /* Prevents overshadowing/click blocking */
-}
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 20px;
+    text-shadow:0 0 6px var(--accent),0 0 12px var(--accent);
+  }
 
-.header h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #FF6B00;
-  margin-bottom: 0;
-  text-shadow:
-    0 0 6px #FF6B00,
-    0 0 12px #FF6B00;
-  pointer-events: auto;
-}
-
-  /* container */
+  /* card container */
   .card {
     position:relative;
-    width: 260px;
-    height: 340px;
+    width: 280px;
+    height: 360px;
     background: linear-gradient(180deg,var(--card), #1b1b1b);
     border-radius:18px;
     box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,107,0,0.08);
     overflow:hidden;
   }
 
-  /* content layers (hidden until active) */
   .panel {
     position:absolute;
     inset:0;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
-    text-align:center;
+    justify-content:flex-end;
     padding:22px;
     gap:12px;
     opacity:0;
-    transition: opacity 360ms ease 80ms;
-    pointer-events:none;             /* disabled until active */
+    transition: opacity 300ms ease;
+    pointer-events:none;
     z-index:1;
+    text-align:center;
   }
-  .panel.active{
-    opacity:1;
-    pointer-events:auto;
-  }
-
-  .panel h2{
-    margin:0;
-    font-size:1.2rem;
-    color:var(--accent);
-    letter-spacing:0.2px;
-  }
-  .panel p{
-    margin:0;
-    color:var(--muted);
-    font-size:0.92rem;
-    line-height:1.25;
-  }
+  .panel.active{opacity:1;pointer-events:auto;}
+  .panel h2{margin:0;font-size:1.2rem;color:var(--accent);}
+  .panel p{margin:0;color:var(--muted);font-size:0.92rem;}
   .cta{
     margin-top:14px;
-    display:inline-block;
     background:var(--accent);
     color:#000;
     padding:10px 18px;
@@ -103,164 +69,97 @@
     font-weight:700;
     text-decoration:none;
     box-shadow: 0 6px 18px rgba(255,107,0,0.18);
-    transition:transform 150ms ease, box-shadow 150ms ease;
   }
-  .cta:active{ transform:translateY(1px) }
-  .cta:hover{ box-shadow: 0 10px 28px rgba(255,107,0,0.22) }
 
-  /* the wallet-like orange door */
+  /* door */
   .door {
     position:absolute;
     inset:0;
     background:var(--accent);
     z-index:2;
-    /* initial curve on the right side to look like wallet flap */
-    border-radius: 0 56% 56% 0;
+    border-radius:0 56% 56% 0;
     transition: transform 600ms cubic-bezier(.2,.9,.25,1), border-radius 600ms cubic-bezier(.2,.9,.25,1);
-    transform: translateX(0%); /* centered covering the middle */
-    pointer-events:auto; /* initially blocks clicks */
+    transform: translateX(0%);
+    pointer-events:auto;
   }
+  .door.open-left{ transform: translateX(-100%); border-radius:56% 0 0 56%; }
+  .door.open-right{ transform: translateX(100%); border-radius:0 56% 56% 0; }
 
-  /* move door left (reveals left side) */
-  .door.open-left{
-    transform: translateX(-100%);
-    border-radius: 56% 0 0 56%;
-  }
-  /* move door right (reveals right side) */
-  .door.open-right{
-    transform: translateX(100%);
-    border-radius: 0 56% 56% 0;
-  }
-
-  /* small labels / switch area */
+  /* navigation placed under the card */
   .switch {
-    position:absolute;
-    bottom:14px;
-    left:50%;
-    transform:translateX(-50%);
     display:flex;
-    gap:18px;
-    z-index:3;
+    gap:20px;
+    margin-top:10px;
   }
   .switch button{
     background:transparent;
-    border:0;
+    border:2px solid var(--accent);
     color:#fff;
-    font-weight:700;
-    font-size:0.95rem;
+    font-weight:600;
+    font-size:1rem;
+    padding:8px 16px;
+    border-radius:30px;
     cursor:pointer;
-    padding:6px 8px;
-    border-radius:8px;
+    transition:all 0.3s ease;
   }
-  .switch button:hover{ color:var(--accent) }
+  .switch button:hover{ background:var(--accent); color:#000; }
   .switch button[disabled]{ opacity:.45; cursor:default }
-
-  /* small responsive tweak */
-  @media (max-width:420px){
-    .card{ width: 88vw; height: 70vh; max-height:420px; }
-  }
 </style>
 </head>
 <body>
 
-  <main class="card" role="main" aria-label="Choose Welder or Customer">
-    <div class="header">
-      <h1>Welder's Kit</h1>
-      </div>
-    <!-- Welder -->
-    <section id="welder" class="panel" aria-hidden="true">
+  <div class="header"><h1>Welder's Kit</h1></div>
+
+  <main class="card">
+    <section id="welder" class="panel">
       <h2>Welders</h2>
-      <p>Access tools, measurement kit, invoices and your dashboard.</p>
-      <a id="welderBtn" class="cta" href="page.html">Continue as Welder</a>
+      <p>Access tools, kits, invoices & dashboard.</p>
+      <a class="cta" href="page.html">Continue as Welder</a>
     </section>
 
-    <!-- Customer -->
-    <section id="customer" class="panel" aria-hidden="true">
+    <section id="customer" class="panel">
       <h2>Customers</h2>
-      <p>Find welding services, request quotes and view invoices.</p>
-      <a id="customerBtn" class="cta" href="customer.html">Continue as Customer</a>
+      <p>Find services, request quotes & view invoices.</p>
+      <a class="cta" href="customer.html">Continue as Customer</a>
     </section>
 
-    <!-- Orange wallet-like door -->
-    <div id="door" class="door" aria-hidden="true"></div>
-
-    <!-- Toggle -->
-    <div class="switch" role="tablist" aria-label="Choose role">
-      <button id="btnWelder" type="button" aria-controls="welder">Welders</button>
-      <button id="btnCustomer" type="button" aria-controls="customer">Customers</button>
-    </div>
+    <div id="door" class="door"></div>
   </main>
 
-<script>
-  (function(){
-    const ANIM_MS = 600;                 // keep in sync with CSS transition
-    const door = document.getElementById('door');
-    const panelWelder = document.getElementById('welder');
-    const panelCustomer = document.getElementById('customer');
-    const btnWelder = document.getElementById('btnWelder');
-    const btnCustomer = document.getElementById('btnCustomer');
-    const toggleButtons = [btnWelder, btnCustomer];
+  <!-- navigation now placed *below* the card -->
+  <div class="switch">
+    <button id="btnWelder">Welders</button>
+    <button id="btnCustomer">Customers</button>
+  </div>
 
-    // initial state: no panel visible, door centered and blocking clicks
-    panelWelder.classList.remove('active');
-    panelCustomer.classList.remove('active');
-    door.classList.remove('open-left', 'open-right');
+<script>
+(function(){
+  const ANIM_MS = 600;
+  const door = document.getElementById('door');
+  const welder = document.getElementById('welder');
+  const customer = document.getElementById('customer');
+  const btnWelder = document.getElementById('btnWelder');
+  const btnCustomer = document.getElementById('btnCustomer');
+
+  function showPanel(panel){
+    welder.classList.remove('active');
+    customer.classList.remove('active');
     door.style.pointerEvents = 'auto';
 
-    // helper: disable toggle buttons while animation is running
-    function setToggleDisabled(state){
-      toggleButtons.forEach(b => b.disabled = state);
+    if(panel === 'welder'){
+      door.classList.add('open-left');
+      door.classList.remove('open-right');
+      setTimeout(()=>{ welder.classList.add('active'); door.style.pointerEvents='none'; }, ANIM_MS);
+    } else {
+      door.classList.add('open-right');
+      door.classList.remove('open-left');
+      setTimeout(()=>{ customer.classList.add('active'); door.style.pointerEvents='none'; }, ANIM_MS);
     }
+  }
 
-    function revealPanel(panelName){
-      // hide both panels visually right away
-      panelWelder.classList.remove('active');
-      panelCustomer.classList.remove('active');
-      panelWelder.setAttribute('aria-hidden', 'true');
-      panelCustomer.setAttribute('aria-hidden', 'true');
-
-      // block toggles and ensure door blocks mouse while moving
-      setToggleDisabled(true);
-      door.style.pointerEvents = 'auto';
-
-      if(panelName === 'welder'){
-        // move door left to reveal left panel
-        door.classList.remove('open-right');
-        door.classList.add('open-left');
-
-        // after animation, show the welder content and allow clicks
-        setTimeout(()=>{
-          panelWelder.classList.add('active');
-          panelWelder.setAttribute('aria-hidden', 'false');
-          door.style.pointerEvents = 'none'; // allow clicking the revealed content
-          setToggleDisabled(false);
-        }, ANIM_MS);
-      } else {
-        // move door right to reveal right panel
-        door.classList.remove('open-left');
-        door.classList.add('open-right');
-
-        setTimeout(()=>{
-          panelCustomer.classList.add('active');
-          panelCustomer.setAttribute('aria-hidden', 'false');
-          door.style.pointerEvents = 'none';
-          setToggleDisabled(false);
-        }, ANIM_MS);
-      }
-    }
-
-    // event listeners for toggle buttons
-    btnWelder.addEventListener('click', () => revealPanel('welder'));
-    btnCustomer.addEventListener('click', () => revealPanel('customer'));
-
-    // extra safety: when user navigates via CTA link, ensure door is not blocking click.
-    // If a user clicks CTA before animation ends, block navigation (default behavior prevented).
-    // But since CTA is pointer-events:none until active, it's safe. For safety, ensure CTA only active when panel active.
-    // No additional code required for anchors.
-
-    // optional: show welder by default on first load (uncomment if wanted)
-    // revealPanel('welder');
-  })();
+  btnWelder.onclick = ()=> showPanel('welder');
+  btnCustomer.onclick = ()=> showPanel('customer');
+})();
 </script>
 </body>
 </html>
