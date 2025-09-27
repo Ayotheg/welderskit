@@ -23,6 +23,32 @@
     padding:20px;
   }
 
+  .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none; /* Prevents overshadowing/click blocking */
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #FF6B00;
+  margin-bottom: 0;
+  text-shadow:
+    0 0 6px #FF6B00,
+    0 0 12px #FF6B00;
+  pointer-events: auto;
+}
+
   /* container */
   .card {
     position:relative;
@@ -138,6 +164,9 @@
 <body>
 
   <main class="card" role="main" aria-label="Choose Welder or Customer">
+    <div class="header">
+      <h1>Welder's Kit</h1>
+      </div>
     <!-- Welder -->
     <section id="welder" class="panel" aria-hidden="true">
       <h2>Welders</h2>
