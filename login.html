@@ -1,181 +1,237 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Login — Welder or Customer</title>
+<style>
     @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  :root{
+    --bg:#000;
+    --card:#111;
+    --accent:#FF6B00;
+    --muted:#bbb;
+  }
+  html,body{height:100%;margin:0}
+  body{
+    background:var(--bg);
+    color:#fff;
+    font-family: "Poppins", sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
 
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000;
-      font-family: "Poppins", sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
+  /* container */
+  .card {
+    position:relative;
+    width: 260px;
+    height: 340px;
+    background: linear-gradient(180deg,var(--card), #1b1b1b);
+    border-radius:18px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,107,0,0.08);
+    overflow:hidden;
+  }
 
-    .container {
-      position: relative;
-      width: 280px;
-      height: 360px;
-      background: #1a1a1a;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(255, 107, 0, 0.5);
-      overflow: hidden;
-    }
+  /* content layers (hidden until active) */
+  .panel {
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:22px;
+    gap:12px;
+    opacity:0;
+    transition: opacity 360ms ease 80ms;
+    pointer-events:none;             /* disabled until active */
+    z-index:1;
+  }
+  .panel.active{
+    opacity:1;
+    pointer-events:auto;
+  }
 
-    .content {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.4s ease-in-out;
-      z-index: 1;
-    }
+  .panel h2{
+    margin:0;
+    font-size:1.2rem;
+    color:var(--accent);
+    letter-spacing:0.2px;
+  }
+  .panel p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.92rem;
+    line-height:1.25;
+  }
+  .cta{
+    margin-top:14px;
+    display:inline-block;
+    background:var(--accent);
+    color:#000;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:700;
+    text-decoration:none;
+    box-shadow: 0 6px 18px rgba(255,107,0,0.18);
+    transition:transform 150ms ease, box-shadow 150ms ease;
+  }
+  .cta:active{ transform:translateY(1px) }
+  .cta:hover{ box-shadow: 0 10px 28px rgba(255,107,0,0.22) }
 
-    .content.active {
-      opacity: 1;
-    }
+  /* the wallet-like orange door */
+  .door {
+    position:absolute;
+    inset:0;
+    background:var(--accent);
+    z-index:2;
+    /* initial curve on the right side to look like wallet flap */
+    border-radius: 0 56% 56% 0;
+    transition: transform 600ms cubic-bezier(.2,.9,.25,1), border-radius 600ms cubic-bezier(.2,.9,.25,1);
+    transform: translateX(0%); /* centered covering the middle */
+    pointer-events:auto; /* initially blocks clicks */
+  }
 
-    .content h2 {
-      color: #FF6B00;
-      margin-bottom: 15px;
-    }
+  /* move door left (reveals left side) */
+  .door.open-left{
+    transform: translateX(-100%);
+    border-radius: 56% 0 0 56%;
+  }
+  /* move door right (reveals right side) */
+  .door.open-right{
+    transform: translateX(100%);
+    border-radius: 0 56% 56% 0;
+  }
 
-    .content p {
-      color: #bbb;
-      margin-bottom: 25px;
-      font-size: 0.9rem;
-    }
+  /* small labels / switch area */
+  .switch {
+    position:absolute;
+    bottom:14px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:18px;
+    z-index:3;
+  }
+  .switch button{
+    background:transparent;
+    border:0;
+    color:#fff;
+    font-weight:700;
+    font-size:0.95rem;
+    cursor:pointer;
+    padding:6px 8px;
+    border-radius:8px;
+  }
+  .switch button:hover{ color:var(--accent) }
+  .switch button[disabled]{ opacity:.45; cursor:default }
 
-    .btn {
-      background: #FF6B00;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.3s;
-      font-size: 0.9rem;
-    }
-
-    .btn:hover {
-      background: #e55a00;
-    }
-
-    /* Sliding Orange Door */
-    .door {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #FF6B00;
-      border-radius: 0 60% 60% 0;
-      transform: translateX(0);
-      transition: transform 0.6s ease-in-out, border-radius 0.6s ease-in-out;
-      z-index: 2;
-    }
-
-    .door.open-left {
-      transform: translateX(-100%);
-      border-radius: 60% 0 0 60%;
-    }
-
-    .door.open-right {
-      transform: translateX(100%);
-      border-radius: 0 60% 60% 0;
-    }
-
-    .toggle {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 25px;
-      z-index: 3;
-    }
-
-    .toggle button {
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .toggle button:hover {
-      color: #FF6B00;
-    }
-
-      </style>
+  /* small responsive tweak */
+  @media (max-width:420px){
+    .card{ width: 88vw; height: 70vh; max-height:420px; }
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <!-- Welder Content -->
-    <div class="content" id="welderContent">
 
+  <main class="card" role="main" aria-label="Choose Welder or Customer">
+    <!-- Welder -->
+    <section id="welder" class="panel" aria-hidden="true">
       <h2>Welders</h2>
-      <p>Access your tools, kits, and resources.</p>
-      <a href="page.html" class="btn">Continue as Welder</a>
-    </div>
+      <p>Access tools, measurement kit, invoices and your dashboard.</p>
+      <a id="welderBtn" class="cta" href="page.html">Continue as Welder</a>
+    </section>
 
-    <!-- Customer Content -->
-    <div class="content" id="customerContent">
+    <!-- Customer -->
+    <section id="customer" class="panel" aria-hidden="true">
       <h2>Customers</h2>
-      <p>Find welding services and order repairs.</p>
-      <a href="customer.html" class="btn">Continue as Customer</a>
+      <p>Find welding services, request quotes and view invoices.</p>
+      <a id="customerBtn" class="cta" href="customer.html">Continue as Customer</a>
+    </section>
+
+    <!-- Orange wallet-like door -->
+    <div id="door" class="door" aria-hidden="true"></div>
+
+    <!-- Toggle -->
+    <div class="switch" role="tablist" aria-label="Choose role">
+      <button id="btnWelder" type="button" aria-controls="welder">Welders</button>
+      <button id="btnCustomer" type="button" aria-controls="customer">Customers</button>
     </div>
+  </main>
 
-    <!-- Orange Sliding Door -->
-    <div class="door" id="door"></div>
-
-    <!-- Toggle Buttons -->
-    <div class="toggle">
-      <button onclick="slideDoor('welder')">Welders</button>
-      <button onclick="slideDoor('customer')">Customers</button>
-    </div>
-  </div>
-
-  <script>
+<script>
+  (function(){
+    const ANIM_MS = 600;                 // keep in sync with CSS transition
     const door = document.getElementById('door');
-    const welderContent = document.getElementById('welderContent');
-    const customerContent = document.getElementById('customerContent');
+    const panelWelder = document.getElementById('welder');
+    const panelCustomer = document.getElementById('customer');
+    const btnWelder = document.getElementById('btnWelder');
+    const btnCustomer = document.getElementById('btnCustomer');
+    const toggleButtons = [btnWelder, btnCustomer];
 
-    function slideDoor(target) {
-      // Hide both first
-      welderContent.classList.remove('active');
-      customerContent.classList.remove('active');
+    // initial state: no panel visible, door centered and blocking clicks
+    panelWelder.classList.remove('active');
+    panelCustomer.classList.remove('active');
+    door.classList.remove('open-left', 'open-right');
+    door.style.pointerEvents = 'auto';
 
-      if (target === 'welder') {
+    // helper: disable toggle buttons while animation is running
+    function setToggleDisabled(state){
+      toggleButtons.forEach(b => b.disabled = state);
+    }
+
+    function revealPanel(panelName){
+      // hide both panels visually right away
+      panelWelder.classList.remove('active');
+      panelCustomer.classList.remove('active');
+      panelWelder.setAttribute('aria-hidden', 'true');
+      panelCustomer.setAttribute('aria-hidden', 'true');
+
+      // block toggles and ensure door blocks mouse while moving
+      setToggleDisabled(true);
+      door.style.pointerEvents = 'auto';
+
+      if(panelName === 'welder'){
+        // move door left to reveal left panel
         door.classList.remove('open-right');
         door.classList.add('open-left');
-        setTimeout(() => {
-          welderContent.classList.add('active');
-        }, 600); // after door finishes sliding
+
+        // after animation, show the welder content and allow clicks
+        setTimeout(()=>{
+          panelWelder.classList.add('active');
+          panelWelder.setAttribute('aria-hidden', 'false');
+          door.style.pointerEvents = 'none'; // allow clicking the revealed content
+          setToggleDisabled(false);
+        }, ANIM_MS);
       } else {
+        // move door right to reveal right panel
         door.classList.remove('open-left');
         door.classList.add('open-right');
-        setTimeout(() => {
-          customerContent.classList.add('active');
-        }, 600);
+
+        setTimeout(()=>{
+          panelCustomer.classList.add('active');
+          panelCustomer.setAttribute('aria-hidden', 'false');
+          door.style.pointerEvents = 'none';
+          setToggleDisabled(false);
+        }, ANIM_MS);
       }
     }
-  </script>
+
+    // event listeners for toggle buttons
+    btnWelder.addEventListener('click', () => revealPanel('welder'));
+    btnCustomer.addEventListener('click', () => revealPanel('customer'));
+
+    // extra safety: when user navigates via CTA link, ensure door is not blocking click.
+    // If a user clicks CTA before animation ends, block navigation (default behavior prevented).
+    // But since CTA is pointer-events:none until active, it's safe. For safety, ensure CTA only active when panel active.
+    // No additional code required for anchors.
+
+    // optional: show welder by default on first load (uncomment if wanted)
+    // revealPanel('welder');
+  })();
+</script>
 </body>
 </html>
