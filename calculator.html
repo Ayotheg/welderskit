@@ -288,15 +288,15 @@
     }
 
     function setOperation(op) {
+      firstNum = current;
+      current = "";
+      operation = op;
       if (current === "") return;
       
       if (firstNum !== null && operation !== null && current !== "") {
         calculateResult();
       }
       
-      firstNum = current;
-      current = "";
-      operation = op;
       showStatus(`Selected: ${getOperationSymbol(op)}`, 'info');
     }
 
@@ -403,7 +403,7 @@
 
     function updateDisplay() {
       const display = document.getElementById("display");
-      display.value += current || "0";
+      display.value = current || "0";
     }
 
     function showStatus(message, type) {
@@ -454,4 +454,5 @@
   </script>
 </body>
 </html>
+
 
