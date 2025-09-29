@@ -295,6 +295,8 @@
       
       if (firstNum !== null && operation !== null && current !== "") {
         calculateResult();
+        current += ` ${op}`
+        updateDisplay()
       }
       
       showStatus(`Selected: ${getOperationSymbol(op)}`, 'info');
@@ -454,5 +456,6 @@
   </script>
 </body>
 </html>
+
 
 
