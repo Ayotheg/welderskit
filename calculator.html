@@ -294,9 +294,8 @@
       if (current === "") return;
       
       if (firstNum !== null && operation !== null && current !== "") {
+       document.getElementById("display").value += ` ${op}`;
         calculateResult();
-        current += ` ${op}`
-        updateDisplay()
       }
       
       showStatus(`Selected: ${getOperationSymbol(op)}`, 'info');
@@ -456,6 +455,7 @@
   </script>
 </body>
 </html>
+
 
 
 
