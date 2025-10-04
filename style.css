@@ -19,7 +19,7 @@
     padding: 0;
     box-sizing: border-box;
     text-align: center;
-     list-style-type: none;
+    list-style-type: none;
     text-decoration: none;
     font-family: "Poppins", sans-serif;
     font-style: normal;
@@ -67,7 +67,7 @@
 
 
 body{
-    background-color:#121212 !important;
+  background-color:#121212 !important;
   font-family: "Poppins", sans-serif;
   font-weight: 450;
   font-style: normal;
@@ -122,6 +122,9 @@ body{
   gap: 15px;
   padding: 50px;
   margin-top: 50px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .menu-grid-2{
@@ -130,6 +133,9 @@ body{
   gap: 15px;
   padding: 50px;
   margin-top: -60px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 .menu-grid-3{
   display: grid;
@@ -137,6 +143,9 @@ body{
   gap: 15px;
   padding: 50px;
   margin-top: -60px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 .menu-grid-4{
   display: grid;
@@ -144,6 +153,9 @@ body{
   gap: 15px;
   padding: 50px;
   margin-top: -60px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .grid-items{
@@ -155,6 +167,9 @@ body{
     color: #000000 !important;
     text-decoration: none;
     list-style-type: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 
 
 }
@@ -244,15 +259,15 @@ body{
 a{
   text-decoration: none;
   list-style-type: none;
-  color: #000000;
+  color: #000000 !important;
 }
 
 a:visited{
-  color: #000000;
+  color: #fff !important;
 }
 
 a:focus,a:hover{
-  color: #fff;
+  color: #58f311 !important;
 }
 
 
