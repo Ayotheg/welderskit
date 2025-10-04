@@ -226,9 +226,9 @@ body{
 }
 
 .table-content{
- justify-content: center;
- align-items: center;
- text-align: center;
+ justify-content: center !important;
+ align-items: center !important;
+ text-align: center !important;
  color: #000000 !important;
  z-index: 999 !important;
 
@@ -252,8 +252,9 @@ body{
   display: block;
   text-align: center !important;
   position: relative;
-  top: 50px;
-  left: -10px;
+  top: 35px;
+  left: -12px !important;
+  
 }
 
 a{
