@@ -1,4 +1,7 @@
-    *{
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -75,6 +78,9 @@ body{
 .content{
     position: relative;
     top: 180px;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
  
 
 }
@@ -111,7 +117,14 @@ body{
     pointer-events: auto;
 }
 
-
+.text-head{
+    display: flex;
+    text-align: center;
+    position: relative;
+    top: 50px;
+    font-weight: 600;
+    justify-content: center;
+}
 
 }
 
