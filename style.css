@@ -223,6 +223,7 @@ body{
   position: relative;
   top: 40px;
   color: #000;
+  text-align: center !important;
  
 }
 
@@ -246,6 +247,7 @@ body{
 .table-content>ul{
    display: block !important;
    color:#000000 !important;
+   text-align: center !important;
    
 }
 
@@ -262,6 +264,9 @@ a{
   text-decoration: none;
   list-style-type: none;
   color: #000000 !important;
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center  !important;
 }
 
 a:visited{
