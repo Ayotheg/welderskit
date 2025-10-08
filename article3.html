@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips for Hiring Welders on Welder's Kit</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style-type: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        .container-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+       .header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none; /* Prevents overshadowing/click blocking */
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #FF6B00;
+  margin-bottom: 0;
+  text-shadow:
+    0 0 6px #FF6B00,
+    0 0 12px #FF6B00;
+  pointer-events: auto;
+}
+
+        /* Back Arrow */
+        .arrow {
+            display: inline-block;
+            color: #ffb000;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .arrow:hover {
+            transform: translateX(-5px);
+            color: #ff8c00;
+        }
+
+        /* Article Title */
+        .text-head {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Featured Image */
+        .article-image-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            border: 3px solid #FF6B00;
+            box-shadow: 0 0 20px rgba(255, 176, 0, 0.3);
+        }
+
+        .figcaption {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Content Styling */
+        .content {
+            font-family: "Playfair Display", serif;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin: 40px 0;
+        }
+
+        .content h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 40px 0 20px;
+            border-left: 5px solid #ffb000;
+            padding-left: 15px;
+        }
+
+        .content h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 30px 0 15px;
+        }
+
+        .content h4 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 25px 0 15px;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .content ul, .content ol {
+            margin: 20px 0 20px 30px;
+            color: #e0e0e0;
+        }
+
+        .content ul {
+            list-style-type: disc;
+        }
+
+        .content ol {
+            list-style-type: decimal;
+        }
+
+        .content li {
+            margin-bottom: 15px;
+        }
+
+        .content ul li {
+            list-style-type: disc;
+        }
+
+        .content ol li {
+            list-style-type: decimal;
+        }
+
+        .content strong {
+            color: #ffb000;
+            font-weight: 600;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, #1a2d1a 0%, #203d20 100%);
+            border-left: 4px solid #4CAF50;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .tip-box h3 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+
+        /* Verification Badge Box */
+        .badge-box {
+            background: linear-gradient(135deg, #1a1a2d 0%, #2d2d40 100%);
+            border: 2px solid #ffb000;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .badge-box .badge-icons {
+            font-size: 2rem;
+            margin: 15px 0;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #2d1a1a 0%, #3d2020 100%);
+            border-left: 4px solid #ff4444;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box strong {
+            color: #ff6666;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, #ffb000 0%, #ff8c00 100%);
+            color: #000;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(255, 176, 0, 0.4);
+        }
+
+        .cta-box h3 {
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #1a1a2d 0%, #2d2d40 100%);
+            border: 2px solid #00bcd4;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .text-head {
+                font-size: 1.3rem;
+                padding: 0 15px;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content h3 {
+                font-size: 1.2rem;
+            }
+
+            .img {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <h1>Welder's Kit</h1>
+        </div>
+
+        <!-- Back Arrow -->
+        <a class="arrow" href="customer-blog.html">
+            <i class='bx bxs-left-arrow'></i>
+        </a>
+
+        <!-- Article Title -->
+        <h1 class="text-head">Tips for Hiring Welders on Welder's Kit</h1>
+
+        <!-- Featured Image -->
+        <div class="article-image-container">
+            <img class="img" src="img/hiring-welder.jpg" alt="Hiring professional welders on Welder's Kit">
+            <figcaption class="figcaption">Image credit:Imagefx</figcaption>
+        </div>
+
+        <!-- Article Content -->
+        <div class="content">
+            <p>
+                In today's digital world, finding reliable services online can be a daunting task. This is where Welder's Kit comes in. As a dedicated Nigerian web platform, Welder's Kit connects customers with verified welders, ensuring quality and safety with innovative AI tools to detect welding faults. While the platform offers a reliable way to hire welders, users should remain vigilant and take additional precautions, similar to any other online marketplace.
+            </p>
+
+            <h2>Look for Verified Profiles and Badges</h2>
+            <p>
+                When browsing through profiles on Welder's Kit, pay attention to verification badges such as ✅ <strong>Verified Welder</strong> or 🏅 <strong>Top Rated</strong>. These badges signify that a welder has submitted proof of identity or provided photos of their workshop. Hiring welders with these indicators ensures that you're engaging with a trustworthy professional who has a track record of quality work and positive customer reviews. Always prioritize these verified profiles when looking to hire welders online.
+            </p>
+
+            <div class="badge-box">
+                <h3>Look for These Trust Indicators</h3>
+                <div class="badge-icons">
+                    ✅ Verified Welder | 🏅 Top Rated | ⭐ 5-Star Reviews
+                </div>
+                <p>These badges mean the welder has been vetted by our platform and has a proven track record of quality work.</p>
+            </div>
+
+            <h2>Check Reviews and Portfolio</h2>
+            <p>
+                Before making any hiring decisions, take the time to read through the reviews left by previous customers. These testimonials provide valuable insights into the welder's work quality, professionalism, and reliability. Additionally, examine their portfolio to see examples of past projects. A comprehensive portfolio demonstrates experience and expertise in various welding techniques and applications.
+            </p>
+
+           
+            <h2>Communicate Clearly Before Hiring</h2>
+            <p>
+                Effective communication is key to a successful welding project. Before hiring, discuss your project requirements in detail with the welder. Explain the scope of work, timeline, and budget expectations. A professional welder will ask relevant questions, provide suggestions, and offer a clear quote. This initial conversation helps establish trust and ensures both parties are on the same page.
+            </p>
+
+            <h2>Use the Platform's AI Defector Tool</h2>
+            <p>
+                One of Welder's Kit's standout features is the AI-powered Defector tool. This innovative technology allows you to upload or take photos of welding work to automatically detect faults and quality issues.
+            </p>
+
+
+            <h2>Never Pay Full Amount Upfront</h2>
+            <p>
+                While Welder's Kit verifies its welders, it's important to follow safe payment practices. <strong>Never pay the full amount before work begins.</strong> A standard approach is to:
+            </p>
+
+            <div class="warning-box">
+                <p><strong>⚠️ Payment Best Practices:</strong></p>
+                <ul>
+                    <li>Provide materials yourself whenever possible</li>
+                    <li>If the welder needs to purchase materials, give them only enough for those specific items</li>
+                    <li>Pay in milestones as work progresses</li>
+                    <li>Keep the final payment (30-50%) until project completion and inspection</li>
+                    <li>Get receipts for all transactions</li>
+                </ul>
+            </div>
+
+            <h2>Meet in Person and Inspect the Workspace</h2>
+            <p>
+                If possible, arrange to meet the welder in person before finalizing your decision. Visit their workshop to assess their equipment, organization, and professionalism. A well-maintained workspace with proper tools indicates a serious professional who takes pride in their craft.
+            </p>
+
+            <h2>Document Everything</h2>
+            <p>
+                Keep detailed records of all communications, agreements, and transactions. Take photos before, during, and after the project. This documentation protects both you and the welder, providing evidence of the agreed-upon scope and quality standards.
+            </p>
+
+            <h2>Trust Your Instincts</h2>
+            <p>
+                If something feels off about a welder's profile, communication, or behavior, trust your gut. There are many qualified welders on Welder's Kit — don't hesitate to keep looking until you find one you're completely comfortable with. Red flags include:
+            </p>
+
+            <ul>
+                <li>Pressure to pay immediately or fully upfront</li>
+                <li>Reluctance to provide references or show previous work</li>
+                <li>Poor communication or unprofessional behavior</li>
+                <li>Prices that seem too good to be true</li>
+                <li>Unwillingness to put agreements in writing</li>
+            </ul>
+
+            <h2>Report Suspicious Activity</h2>
+            <p>
+                Welder's Kit is committed to maintaining a safe and trustworthy platform. If you encounter any suspicious behavior or fraudulent activity, report it immediately using the platform's reporting feature. Your vigilance helps protect the entire community.
+            </p>
+
+        </div>
+    </div>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

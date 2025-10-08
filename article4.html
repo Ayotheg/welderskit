@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Welders Safely: Avoid Escrow Payments with Welder's Kit</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style-type: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        .container-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+       .header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none; /* Prevents overshadowing/click blocking */
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #FF6B00;
+  margin-bottom: 0;
+  text-shadow:
+    0 0 6px #FF6B00,
+    0 0 12px #FF6B00;
+  pointer-events: auto;
+}
+
+        /* Back Arrow */
+        .arrow {
+            display: inline-block;
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .arrow:hover {
+            transform: translateX(-5px);
+            color: #FF6B00;
+        }
+
+        /* Article Title */
+        .text-head {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Featured Image */
+        .article-image-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            border: 3px solid #FF6B00;
+            box-shadow: 0 0 20px rgba(255, 176, 0, 0.3);
+        }
+
+        .figcaption {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Content Styling */
+        .content {
+            font-family: "Playfair Display", serif;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin: 40px 0;
+        }
+
+        .content h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 40px 0 20px;
+            border-left: 5px solid #FF6B00;
+            padding-left: 15px;
+        }
+
+        .content h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 30px 0 15px;
+        }
+
+        .content h4 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 25px 0 15px;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .content ul, .content ol {
+            margin: 20px 0 20px 30px;
+            color: #e0e0e0;
+        }
+
+        .content ul {
+            list-style-type: disc;
+        }
+
+        .content ol {
+            list-style-type: decimal;
+        }
+
+        .content li {
+            margin-bottom: 15px;
+        }
+
+        .content ul li {
+            list-style-type: disc;
+        }
+
+        .content ol li {
+            list-style-type: decimal;
+        }
+
+        .content strong {
+            color: #FF6B00;
+            font-weight: 600;
+        }
+
+        /* Danger Alert Box */
+        .danger-box {
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+            color: #fff;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            border: 3px solid #FF6B00;
+            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
+        }
+
+        .danger-box h3 {
+            color: #fff;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .danger-box p {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        /* Warning List Box */
+        .warning-list-box {
+            background: linear-gradient(135deg, #2d1a1a 0%, #3d2020 100%);
+            border-left: 4px solidffff;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .warning-list-box ul li {
+            color: fff;
+        }
+
+        .warning-list-box strong {
+            color:fff;
+        }
+
+        /* Policy Box */
+        .policy-box {
+            background: #000000;
+            border: 3px solid #FF6B00;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .policy-box h3 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        /* Success Box */
+        .success-box {
+            background: #000000;
+            border-left: 4px solid #FF6B00;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .success-box h3 {
+            color: #FF6B00;
+            margin-top: 0;
+        }
+
+        .success-box ul li strong {
+            color: #FF6B00;
+        }
+
+        /* Guidelines Box */
+        .guidelines-box {
+            background: #000000;
+            border-left: 4px solid #FF6B00;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .guidelines-box ol {
+            margin-left: 0;
+            padding-left: 20px;
+        }
+
+        /* Scam Alert Box */
+        .scam-alert-box {
+            background: #000000;
+            border: 2px solid #FF6B00;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .scam-alert-box h3 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        /* Safety Tips Box */
+        .safety-tips-box {
+            background: linear-gradient(135deg, #1a2d1a 0%, #203d20 100%);
+            border: 2px solid #FF6B00;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+        }
+
+        .safety-tips-box h3 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+
+
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .text-head {
+                font-size: 1.3rem;
+                padding: 0 15px;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content h3 {
+                font-size: 1.2rem;
+            }
+
+            .img {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <h1>Welder's Kit</h1>
+        </div>
+
+        <!-- Back Arrow -->
+        <a class="arrow" href="customer-blog.html">
+            <i class='bx bxs-left-arrow'></i>
+        </a>
+
+        <!-- Article Title -->
+        <h1 class="text-head">Hiring Welders Safely: Avoid Escrow Payments with Welder's Kit</h1>
+
+        <!-- Featured Image -->
+        <div class="article-image-container">
+            <img class="img" src="img/escrow payments.jpg" alt="Safe payment practices when hiring welders">
+            <figcaption class="figcaption">Image credit:Image fx</figcaption>
+        </div>
+
+        <!-- Article Content -->
+        <div class="content">
+            <p>
+                Finding a reliable welder can be a daunting task, especially with the current challenges many face in the construction industry. But here's where <strong>Welder's Kit</strong> comes to the rescue! As a comprehensive directory platform, Welder's Kit helps you connect with verified welders and offers handy tools like the Defect Detector and "Building Materials Shops Around Me." However, it's vital to keep safety in mind when hiring welder services, especially when it comes to payments.
+            </p>
+
+            <h2>Why You Should Avoid Escrow Payments</h2>
+            <p>
+                Many customers might be tempted to use escrow or make advance payments to secure a welder's service. While this might seem like a safe choice, it actually opens the door to several risks, especially with the prevalence of fake "agents" and untrustworthy welders in the market. Here's why you should think twice before handing over your hard-earned money upfront:
+            </p>
+
+
+            <div class="policy-box">
+                <h3>🛡️ Welder's Kit Official Policy</h3>
+                <p><strong>We are a DIRECTORY SERVICE only.</strong></p>
+                <p>We connect you with welders but DO NOT:</p>
+                <ul style="list-style-type: none; padding: 0; margin-top: 15px;">
+                    <li>❌ Handle any payments</li>
+                    <li>❌ Offer escrow services</li>
+                    <li>❌ Request money from customers</li>
+                    <li>❌ Have "payment agents"</li>
+                    <li>❌ Process transactions</li>
+                </ul>
+            </div>
+
+            <h2>Buy Materials Yourself</h2>
+            <p>
+                When it comes to the materials needed for your welding work, it's best to buy them directly from trusted shops rather than sending money to the welder. This not only gives you more control but also minimizes the risk of falling victim to scams.
+            </p>
+
+            <div class="success-box">
+                <h3>✅ Smart Material Purchasing</h3>
+                <ul>
+                    <li><strong>Use Our Tool:</strong> With Welder's Kit's "Building Materials Shops Around Me" feature, you can easily locate nearby shops known for quality. This ensures that you're investing your money in the right materials.</li>
+                    
+                    <li><strong>Direct Purchase:</strong> Buy materials yourself and transport them to the job site, or arrange for direct delivery from the supplier.</li>
+                    
+                    <li><strong>Quality Control:</strong> When you buy materials yourself, you ensure quality and can verify that you're getting exactly what you need.</li>
+                    
+                    <li><strong>Receipt Keeping:</strong> Keep all receipts as proof of purchase and for budget tracking.</li>
+                </ul>
+            </div>
+
+            <h2>Payment Guidelines</h2>
+            <p>Follow these safe payment practices to protect yourself:</p>
+
+            <div class="guidelines-box">
+                <ol>
+                    <li><strong>Deposit After Confirmation:</strong> It's acceptable to provide a small deposit (10-20% maximum) after you've verified the welder's identity and have seen some of their previous work. Never pay more than 20% upfront.</li>
+                    
+                    <li><strong>Written Agreement:</strong> Before starting the job, always get a simple written agreement detailing the scope of work and costs involved. This will protect both parties and clarify expectations. Include payment milestones tied to work completion.</li>
+                    
+                    <li><strong>Milestone Payments:</strong> Structure payments based on project milestones (e.g., 20% to start, 30% at midpoint, 50% upon completion and inspection).</li>
+                    
+                    <li><strong>Final Payment After Inspection:</strong> Never release the final payment until you've thoroughly inspected the work and confirmed it meets agreed-upon standards. Use the AI Defector tool to verify quality.</li>
+                    
+                    <li><strong>Direct Payment to Welder:</strong> Always pay the welder directly—never through third parties, "agents," or payment links sent via messages.</li>
+                </ol>
+            </div>
+
+            <h2>Spotting Fake Payment Requests</h2>
+            <p>
+                It's crucial to remain vigilant while hiring welders. Here are some tips for identifying suspicious payment requests:
+            </p>
+
+            <div class="scam-alert-box">
+                <h3>🚫 Common Scam Tactics</h3>
+                <ul>
+                    <li><strong>Fake Representation:</strong> Be wary of welders who claim they represent Welder's Kit and request payments via links or request your complete upfront payment. Welder's Kit NEVER collects payments.</li>
+                    
+                    <li><strong>Urgent Payment Demands:</strong> Scammers create false urgency, claiming you must pay immediately to secure services or materials.</li>
+                    
+                    <li><strong>Payment Links:</strong> Never click on payment links sent via WhatsApp, email, or SMS claiming to be from Welder's Kit or any welder.</li>
+                    
+                    <li><strong>"Processing Fees":</strong> If someone asks for "processing fees," "registration fees," or "verification fees" to hire a welder, it's a scam.</li>
+                    
+                    <li><strong>Unofficial Payment Methods:</strong> Be cautious of requests for payment via gift cards, cryptocurrency, or wire transfers to unknown accounts.</li>
+                </ul>
+                <p style="margin-top: 20px; font-weight: 600; color: #fff;">
+                    <strong>Use the Reporting Feature:</strong> If something feels wrong, use our "Report Suspicious Welders" feature on the platform. This helps maintain the safety and reliability of our community.
+                </p>
+            </div>
+
+          
+            <h2>What to Do If You've Been Scammed</h2>
+            <p>
+                If you believe you've fallen victim to a scam:
+            </p>
+            <ul>
+                <li>Report it immediately using Welder's Kit's reporting feature</li>
+                <li>Contact your bank or payment provider to dispute the transaction</li>
+                <li>File a report with local law enforcement</li>
+                <li>Share your experience to warn others in the community</li>
+                <li>Do not engage further with the scammer</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
