@@ -27,21 +27,23 @@
         .header {
             text-align: center;
             padding: 30px 0 20px;
-            border-bottom: 2px solid #ffb000;
+            border-bottom: 2px solid #FFf;
             margin-bottom: 30px;
         }
 
         .header h1 {
             font-size: 2rem;
             font-weight: 700;
-            color: #ffb000;
-            text-shadow: 0 0 10px #ffb000, 0 0 20px #ffb000;
+            color:#FF6B00;
+            text-shadow:
+    0 0 6px #FF6B00,
+    0 0 12px #FF6B00;
         }
 
         /* Back Arrow */
         .arrow {
             display: inline-block;
-            color: #ffb000;
+            color: #fff;
             font-size: 2rem;
             margin-bottom: 20px;
             transition: transform 0.3s;
@@ -49,14 +51,14 @@
 
         .arrow:hover {
             transform: translateX(-5px);
-            color: #ff8c00;
+            color: #FF6B00;
         }
 
         /* Article Title */
         .text-head {
             font-size: 1.8rem;
             font-weight: 600;
-            color: #ffb000;
+            color: #ffffff;
             text-align: center;
             margin-bottom: 30px;
             line-height: 1.4;
@@ -72,8 +74,8 @@
             max-width: 100%;
             height: auto;
             border-radius: 15px;
-            border: 3px solid #ffb000;
-            box-shadow: 0 0 20px rgba(255, 176, 0, 0.3);
+            border: 3px solid #FF6B00;
+            box-shadow: 0 0 20px rgba(255, 94, 0, 0.3);
         }
 
         .figcaption {
@@ -95,9 +97,9 @@
             font-family: "Poppins", sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: #ffb000;
+            color: #fff;
             margin: 40px 0 20px;
-            border-left: 5px solid #ffb000;
+            border-left: 5px solid #FF6B00;
             padding-left: 15px;
         }
 
@@ -105,7 +107,7 @@
             font-family: "Poppins", sans-serif;
             font-size: 1.4rem;
             font-weight: 600;
-            color: #ff8c00;
+            color: #FF6B00;
             margin: 30px 0 15px;
         }
 
@@ -113,7 +115,7 @@
             font-family: "Poppins", sans-serif;
             font-size: 1.2rem;
             font-weight: 600;
-            color: #ffa500;
+            color: #FF6B00;
             margin: 25px 0 15px;
         }
 
@@ -133,14 +135,14 @@
         }
 
         .content strong {
-            color: #ffb000;
+            color:#FF6B00;
             font-weight: 600;
         }
 
         /* Fault Types Section */
         .fault-item {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            border-left: 4px solid #ffb000;
+            border-left: 4px solid#FF6B00;
             padding: 20px;
             margin: 20px 0;
             border-radius: 8px;
@@ -152,17 +154,17 @@
 
         /* CTA Box */
         .cta-box {
-            background: linear-gradient(135deg, #ffb000 0%, #ff8c00 100%);
-            color: #000;
+            background:#000000;
+            color: #ffffff;
             padding: 30px;
             border-radius: 15px;
             text-align: center;
             margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(255, 176, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 123, 0, 0.4);
         }
 
         .cta-box h3 {
-            color: #000;
+            color: #ffffff;
             margin-bottom: 15px;
         }
 
