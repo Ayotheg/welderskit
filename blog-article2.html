@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Precautions for Welders</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style-type: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        .container-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+              /* Header */
+       .header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none; /* Prevents overshadowing/click blocking */
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #FF6B00;
+  margin-bottom: 0;
+  text-shadow:
+    0 0 6px #FF6B00,
+    0 0 12px #FF6B00;
+  pointer-events: auto;
+}
+
+        /* Back Arrow - White Color */
+        .arrow {
+            display: inline-block;
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .arrow:hover {
+            transform: translateX(-5px);
+            color: #FF6B00;
+        }
+
+        /* Article Title */
+        .text-head {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Featured Image */
+        .article-image-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            border: 3px solid #FF6B00;
+            box-shadow: 0 0 20px rgba(255, 176, 0, 0.3);
+        }
+
+        .figcaption {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Content Styling */
+        .content {
+            font-family: "Playfair Display", serif;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin: 40px 0;
+        }
+
+        .content h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 40px 0 20px;
+            border-left: 5px solid #FF6B00;
+            padding-left: 15px;
+        }
+
+        .content h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 30px 0 15px;
+        }
+
+        .content h4 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 25px 0 15px;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .content ul, .content ol {
+            margin: 20px 0 20px 30px;
+            color: #e0e0e0;
+        }
+
+        .content ul {
+            list-style-type: disc;
+        }
+
+        .content ol {
+            list-style-type: decimal;
+        }
+
+        .content li {
+            margin-bottom: 15px;
+        }
+
+        .content ul li {
+            list-style-type: disc;
+        }
+
+        .content ol li {
+            list-style-type: decimal;
+        }
+
+        .content strong {
+            color: #FF6B00;
+            font-weight: 600;
+        }
+
+        /* Safety Alert Banner */
+        .safety-banner {
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+            border: 3px solid #FF6B00;
+            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
+        }
+
+        .safety-banner h3 {
+            color: #fff;
+            margin: 0 0 10px;
+            font-size: 1.6rem;
+        }
+
+        .safety-banner p {
+            color: #fff;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* Protective Gear Grid */
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .gear-card {
+            background: #000000;
+            border: 2px solid #FF6B00;
+            padding: 25px;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .gear-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        .gear-card h4 {
+            color: #FF6B00;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .gear-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Hazards Box */
+        .hazards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .hazard-card {
+            background: #000000;
+            border-left: 4px solid #FF6B00;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .hazard-card h4 {
+            color: #FF6B00;
+            margin-top: 0;
+        }
+
+        /* Workspace Safety Box */
+        .workspace-box {
+            background: #000000;
+            border-left: 4px solid#FF6B00;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 12px;
+        }
+
+        .workspace-box h3 {
+            color: #FF6B00;
+            margin-top: 0;
+        }
+
+        .workspace-box ul li strong {
+            color: #FF6B00;
+        }
+
+        /* Checklist Box */
+        .checklist-box {
+            background: linear-gradient(135deg, #1a2d1a 0%, #203d20 100%);
+            border: 2px solid #4CAF50;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+        }
+
+        .checklist-box h3 {
+            color: #4CAF50;
+            margin-top: 0;
+            font-size: 1.6rem;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, #ffb000 0%, #ff8c00 100%);
+            color: #000;
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(255, 176, 0, 0.4);
+        }
+
+        .cta-box h3 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .cta-box p {
+            color: #000;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .text-head {
+                font-size: 1.3rem;
+                padding: 0 15px;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content h3 {
+                font-size: 1.2rem;
+            }
+
+            .gear-grid,
+            .hazards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .img {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+       <!-- Header -->
+        <div class="header">
+            <h1>Welder's Kit</h1>
+        </div>
+
+
+        <!-- Back Arrow - White Color -->
+        <a class="arrow" href="welder-blog.html">
+            <i class='bx bxs-left-arrow'></i>
+        </a>
+
+        <!-- Article Title -->
+        <h1 class="text-head">Safety Precautions for Welders</h1>
+
+        <!-- Safety Alert Banner -->
+        <div class="safety-banner">
+            <h3>⚠️ SAFETY FIRST</h3>
+            <p>Your life and health are irreplaceable. Always prioritize safety over speed or convenience.</p>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="article-image-container">
+            <img class="img" src="img/safety-precautions.jpg" alt="Welder wearing full protective equipment">
+            <figcaption class="figcaption">Image credit: Image fx</figcaption>
+        </div>
+
+        <!-- Article Content -->
+        <div class="content">
+            <p>
+                Welding is a vital skill in many industries, but it comes with risks. To ensure the safety of welders, it's crucial to be aware of common hazards and adopt vital safety precautions. This article outlines essential safety measures for welders, focusing on protective gear, potential hazards, and creating a safe workspace.
+            </p>
+
+            <h2>1. Protective Gear</h2>
+            <p>
+                The first line of defense against welding hazards is proper protective gear. Welders need to wear the appropriate equipment to minimize risks:
+            </p>
+
+            <div class="gear-grid">
+                <div class="gear-card">
+                    <div class="gear-icon"><img src="img/helmet.jpg" alt="" width="350px" height="300px"></div>
+                    <h4>Welding Helmets</h4>
+                    <p>A good welding helmet protects your face and eyes from harmful UV rays, sparks, and bright light. Look for helmets with auto-darkening filters that adjust to changes in brightness instantly.</p>
+                </div>
+
+                <div class="gear-card">
+                    <div class="gear-icon"><img src="img/gloves.jpg" alt="" width="350px" height="300px"></div>
+                    <h4>Gloves</h4>
+                    <p>Heavy-duty gloves help protect your hands from heat, sharp objects, and electric shock. Ensure your gloves are made from durable materials, like leather, to offer maximum protection without sacrificing flexibility.</p>
+                </div>
+
+                <div class="gear-card">
+                    <div class="gear-icon"><img src="img/apron.jpg" alt="" width="350px" height="300px"></div>
+                    <h4>Clothing</h4>
+                    <p>Wear long sleeves and long pants made from flame-resistant materials. Avoid synthetic fabrics, which can melt and cause severe burns. Safety boots with steel toes are also essential to protect against heavy equipment and falling objects.</p>
+                </div>
+
+                <div class="gear-card">
+                    <div class="gear-icon">🥽</div>
+                    <h4>Eye Protection</h4>
+                    <p>Always use safety goggles or additional eye shields beneath the welding helmet for extra protection against flying debris and sparks.</p>
+                </div>
+            </div>
+
+
+            <h2>2. Common Welding Hazards</h2>
+            <p>
+                Welders face various hazards while working, and being aware of them is essential for safety:
+            </p>
+
+            <div class="hazards-grid">
+                <div class="hazard-card">
+                    <h4>Burns</h4>
+                    <p>Burns are common in welding due to hot metal and sparks. To avoid burns, use protective gear and be cautious when handling hot materials. Allow metal to cool before touching, and mark hot materials clearly.</p>
+                </div>
+
+                <div class="hazard-card">
+                    <h4>Sparks</h4>
+                    <p>Sparks can fly during welding, presenting a fire hazard. Ensure that your workspace is clear of flammable materials, and always work in a well-ventilated area to reduce inhalation risks. Keep a 35-foot radius clear of combustibles.</p>
+                </div>
+
+                <div class="hazard-card">
+                    <h4>Fumes</h4>
+                    <p>Welding fume inhalation can lead to serious health issues including metal fume fever and long-term respiratory problems. Use a fume extraction system or work in an area with good ventilation. Consider wearing a respirator if ventilation is inadequate.</p>
+                </div>
+
+                <div class="hazard-card">
+                    <h4>Electric Shock</h4>
+                    <p>Electric shock is a serious risk in welding. Always ensure that your equipment is well-maintained, insulation on wires is intact, and you wear dry gloves. Be especially cautious when working in wet conditions. Never touch the electrode or metal parts of the electrode holder with bare skin or wet clothing.</p>
+                </div>
+
+                <div class="hazard-card">
+                    <h4>Arc Eye (Flash Burn)</h4>
+                    <p>Exposure to ultraviolet light from the welding arc can cause painful eye injuries known as arc eye or welder's flash. Always use proper eye protection and ensure bystanders are also protected with appropriate screens or curtains.</p>
+                </div>
+
+                <div class="hazard-card">
+                    <h4>Noise Exposure</h4>
+                    <p>Prolonged exposure to welding noise can cause hearing damage. Wear appropriate ear protection, especially in industrial settings or when using certain welding processes like plasma cutting.</p>
+                </div>
+            </div>
+
+            <h2>3. Maintaining a Safe Workspace</h2>
+            <p>
+                A clean and organized workspace is crucial for maintaining safety. Here are some practical tips:
+            </p>
+
+            <div class="workspace-box">
+                <h3>Workspace Safety Guidelines</h3>
+                <ul>
+                    <li><strong>Keep the Area Tidy:</strong> Remove any clutter, tools, or materials that are not in use to avoid tripping hazards. Coil cables and hoses properly to prevent trips and tangles.</li>
+
+                    <li><strong>Proper Lighting:</strong> Ensure that your workspace is adequately lit. Good lighting helps you see the work clearly, reducing the risk of accidents. Position lights to avoid creating shadows on your work area.</li>
+
+                    <li><strong>Ventilation:</strong> Always work in a well-ventilated area. Open windows and doors, or use exhaust fans to keep the air fresh. This helps control fumes generated during welding. Position exhaust systems to capture fumes at the source.</li>
+
+                    <li><strong>Fire Safety:</strong> Keep a fire extinguisher within reach (within 30 feet). Familiarize yourself with its use and ensure it's in working condition. Also, avoid welding near flammable materials. Keep fire watch for at least 30 minutes after welding.</li>
+
+                    <li><strong>Welding Screens:</strong> Use welding screens or curtains to protect nearby workers from arc flash and flying sparks. These should be made from flame-resistant materials.</li>
+
+                    <li><strong>Floor Protection:</strong> Use non-flammable floor mats or clear the floor of combustible materials. Wooden floors should be covered or swept clean of sawdust and debris.</li>
+
+                    <li><strong>Equipment Inspection:</strong> Before starting work, inspect all welding equipment, cables, and connections. Replace any damaged or worn components immediately.</li>
+
+                    <li><strong>Emergency Preparedness:</strong> Know the location of emergency exits, eyewash stations, and first aid kits. Have a plan for emergencies including fire, electric shock, and injuries.</li>
+                </ul>
+            </div>
+
+            <h2>Additional Safety Considerations</h2>
+            
+            <h3>For Confined Spaces</h3>
+            <p>
+                When welding in confined spaces, extra precautions are necessary:
+            </p>
+            <ul>
+                <li>Ensure adequate ventilation or use respiratory protection</li>
+                <li>Have a safety person stationed outside the confined space</li>
+                <li>Test the atmosphere for oxygen levels and toxic gases</li>
+                <li>Have rescue equipment readily available</li>
+                <li>Establish clear communication protocols</li>
+            </ul>
+
+            <h3>Weather Considerations</h3>
+            <p>
+                Outdoor welding requires additional safety measures:
+            </p>
+            <ul>
+                <li>Avoid welding in rain or wet conditions due to electric shock risk</li>
+                <li>Use windbreaks to protect the welding arc and prevent drafts</li>
+                <li>Be aware of heat stress in hot weather—stay hydrated</li>
+                <li>In cold weather, ensure proper warm-up of equipment</li>
+            </ul>
+
+            <h3>Health Monitoring</h3>
+            <p>
+                Regular health checks are important for welders:
+            </p>
+            <ul>
+                <li>Schedule regular eye examinations</li>
+                <li>Get lung function tests periodically</li>
+                <li>Monitor for signs of metal fume exposure</li>
+                <li>Report any persistent coughs, breathing difficulties, or eye problems</li>
+                <li>Keep records of exposure to hazardous materials</li>
+            </ul>
+
+
+            <h2>Emergency Response</h2>
+            <p>Know how to respond to common welding emergencies:</p>
+            
+            <h4>For Burns:</h4>
+            <ul>
+                <li>Cool the burn with running water for at least 10 minutes</li>
+                <li>Remove jewelry or tight clothing before swelling occurs</li>
+                <li>Cover with a clean, dry cloth</li>
+                <li>Seek medical attention for serious burns</li>
+            </ul>
+
+            <h4>For Electric Shock:</h4>
+            <ul>
+                <li>Do not touch the victim while they're in contact with electricity</li>
+                <li>Turn off power source immediately</li>
+                <li>Call emergency services</li>
+                <li>Begin CPR if trained and necessary</li>
+            </ul>
+
+            <h4>For Arc Eye/Flash Burn:</h4>
+            <ul>
+                <li>Do not rub eyes</li>
+                <li>Remove contact lenses if worn</li>
+                <li>Use cold compress</li>
+                <li>Seek medical attention promptly</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
