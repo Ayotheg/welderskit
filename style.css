@@ -270,6 +270,24 @@ a:focus,a:hover{
 
 }
 
+  /* Back Arrow */
+        .arrow {
+            display: inline-block;
+            color: #fff;
+            font-size: 2rem;
+            transition: transform 0.3s;
+            position: relative;
+            top: -120px;
+            left:-155px;
+        }
+
+        .arrow:hover {
+            transform: translateX(-5px);
+            color: #FF6B00;
+        }
+
+
+
 }
 
 
