@@ -93,6 +93,33 @@ body{
   }
 }
 
+              /* Header */
+       .header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none; /* Prevents overshadowing/click blocking */
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #FF6B00;
+  margin-bottom: 0;
+  text-shadow:
+    0 0 6px #FF6B00,
+    0 0 12px #FF6B00;
+  pointer-events: auto;
+}
+
 .menu-grid{
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns for two boxes side by side */
