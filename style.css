@@ -96,7 +96,7 @@ body{
               /* Header */
        .header {
   position: relative;
-  top: 0;
+  top: 3.5rem;
   left: 0;
   width: 100vw;
   z-index: 1000;
