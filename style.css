@@ -93,11 +93,12 @@ body{
   }
 }
 
-              /* Header */
-       .header {
-  position: relative;
-  top: 3.5rem;
-  left: 0;
+        /* Header */
+.header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100vw;
   z-index: 1000;
   text-align: center;
@@ -115,8 +116,8 @@ body{
   color: #FF6B00;
   margin-bottom: 0;
   text-shadow:
-    0 0 6px #FF6B00,
-    0 0 12px #FF6B00;
+  0 0 6px #FF6B00,
+  0 0 12px #FF6B00;
   pointer-events: auto;
   text-align: center;
   justify-content: center;
@@ -180,12 +181,13 @@ body{
 
 
 }
+
 #header{
   position: absolute;
-  margin: 80px 10px;
+  margin: 120px 10px;
   left: 12px;
   color: #fff;
-   font-family: "Funnel Display", sans-serif;
+  font-family: "Funnel Display", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -214,7 +216,7 @@ body{
 .menu{
   justify-content: center;
   align-items: center;
-  margin-top: 45px;
+  margin-top: 60px;
 }
 
 .table{
