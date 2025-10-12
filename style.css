@@ -219,7 +219,6 @@ body{
   
 }
 
-
 .table-content>ul{
   display: block !important;
   color: #000000 !important;
@@ -273,7 +272,7 @@ a:focus,a:hover{
   /* Back Arrow */
         .arrow {
             display: inline-block;
-            color: #fff;
+            color: #fff !important;
             font-size: 2rem;
             transition: transform 0.3s;
             position: relative;
