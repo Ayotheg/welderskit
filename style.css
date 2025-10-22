@@ -22,7 +22,7 @@
     text-align: center;
     list-style-type: none;
     text-decoration: none;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif !important;
     font-style: normal;
     
 }
