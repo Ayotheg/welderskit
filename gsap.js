@@ -36,7 +36,7 @@ gsap.from("#menu-grid-main2",{
     x:400,
     duration:3
 });
-gsap.from("#menu-grid-main3",{
+gsap.from("menu-grid-main3",{
     delay:1,
     x:-400,
     duration:3
