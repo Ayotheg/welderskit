@@ -36,7 +36,7 @@
     box-sizing: border-box;
     list-style-type: none;
     text-decoration: none !important;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif !important;
     font-style: normal;
 }
 
@@ -45,7 +45,7 @@
 
 body{
   background-color:#121212 !important;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif !important;
   font-weight: 450;
   font-style: normal;
   text-decoration: none !important;
@@ -96,8 +96,8 @@ body{
         /* Header */
 .header {
   position: absolute;
-  top: 0;
-  left: 50%;
+  top: 50;
+  left: 48%;
   transform: translateX(-50%);
   width: 100vw;
   z-index: 1000;
@@ -184,7 +184,7 @@ body{
 
 #header{
   position: absolute;
-  margin: 120px 10px;
+  margin: 100px 10px;
   left: 12px;
   color: #fff;
   font-family: "Funnel Display", sans-serif;
