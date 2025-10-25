@@ -96,10 +96,10 @@ body{
         /* Header */
 .header {
   position: absolute;
-  top: 50;
+  top:5%;
   left: 48%;
   transform: translateX(-50%);
-  width: 100vw;
+  width: 1050vw;
   z-index: 1000;
   text-align: center;
   margin-bottom: 0;
@@ -316,7 +316,6 @@ a:focus,a:hover{
             transform: translateX(-5px);
             color: #FF6B00;
         }
-
 
 
 }
