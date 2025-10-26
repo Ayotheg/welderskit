@@ -2,13 +2,13 @@ const CACHE_NAME = "welderskit-v1";
 const CORE_ASSETS = [
   "/",                  // root page
   "/index.html",
-  "/style.css",          // main stylesheet
-  "/script.js",          // main script (assuming you renamed `app.js` to script.js or adjust accordingly)
-  "/kit.html",           // a key page (if this is critical)
-  "/kit.js",             // script for kit page
-  "/style.css",          // already included, adjust duplicates
-  "/style.css",          // remove duplicates
-  // add any other immediately-visible assets like logo, hero-image, font files, etc
+  "/style.css",          
+  "/script.js",          
+  "/kit.html",           
+  "/kit.js",             
+  "/style.css",          
+  "/style.css",          
+  
 ];
 
 // Install event: cache core assets
