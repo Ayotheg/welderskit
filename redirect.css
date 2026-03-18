@@ -1,0 +1,274 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #FF6B00;
+  font-family: 'Poppins', sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 14px;
+  margin-bottom: 30px;
+  color: #FF6B00;
+}
+
+.btn {
+  background-color: #FF6B00;
+  color: #000;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #e65c00;
+  transform: translateY(-2px);
+}
+
+.illustration {
+  width: 180px;
+  margin-bottom: 25px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+footer {
+  font-size: 12px;
+  color: gray;
+  margin-top: 40px;
+}
+
+/* Back Arrow */
+.arrow {
+  display: inline-block;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  transition: transform 0.3s, color 0.3s;
+  z-index: 999;
+  text-decoration: none;
+}
+
+.arrow:hover {
+  transform: translateX(-5px);
+  color: #FF6B00;
+}
+
+/* Desktop Message Container */
+.desktop-message {
+  display: none; /* Hidden by default on mobile */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Typewriter effect container */
+.typewriter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+/* Main content (navigation links) - shown on mobile */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Navigation Links Styling */
+.main-content a {
+  color: #FF6B00;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.main-content a:hover {
+  background-color: #FF6B00;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* ===== DESKTOP VIEW (Tablet and larger) ===== */
+@media screen and (min-width: 768px) {
+  /* Hide main navigation on desktop */
+  .main-content {
+    display: none !important;
+  }
+  
+  /* Show desktop message */
+  .desktop-message {
+    display: flex !important;
+  }
+  
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  h1 {
+    font-size: 36px;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+  
+  .illustration {
+    width: 250px;
+  }
+  
+  .btn {
+    font-size: 18px;
+    padding: 15px 35px;
+  }
+}
+
+/* ===== MOBILE VIEW (Default) ===== */
+@media screen and (max-width: 767px) {
+  /* Show main navigation on mobile */
+  .main-content {
+    display: flex !important;
+  }
+  
+  /* Hide desktop message on mobile */
+  .desktop-message {
+    display: none !important;
+  }
+  
+  body {
+    padding: 20px;
+    min-height: 100vh;
+    height: auto;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  
+  p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .illustration {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  
+  footer {
+    margin-top: 30px;
+    font-size: 11px;
+  }
+}
+
+/* ===== SMALL MOBILE (320px - 480px) ===== */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 22px;
+  }
+  
+  p {
+    font-size: 13px;
+  }
+  
+  .main-content a {
+    font-size: 16px;
+    padding: 8px 15px;
+  }
+  
+  .illustration {
+    width: 120px;
+  }
+}
+
+/* ===== LARGE MOBILE (480px - 767px) ===== */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  h1 {
+    font-size: 26px;
+  }
+  
+  p {
+    font-size: 15px;
+  }
+  
+  .main-content a {
+    font-size: 18px;
+  }
+  
+  .illustration {
+    width: 180px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* QR Code suggestion for desktop users */
+.qr-hint {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #1a1a1a;
+  border: 2px solid #FF6B00;
+  border-radius: 12px;
+  max-width: 400px;
+}
+
+@media screen and (min-width: 768px) {
+  .qr-hint {
+    display: block;
+  }
+}
+
+.qr-hint p {
+  color: #fff;
+  font-size: 14px;
+  margin: 5px 0;
+}

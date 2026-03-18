@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welder Calculator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+    body {
+       font-family: "Poppins", sans-serif;
+  font-style: normal;
+      background: #000000;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .calculator {
+      width: 280px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid #FF6B00;
+      border-radius: 15px;
+      background: #f9f9f9;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .title {
+      text-align: center;
+      color: #000000;
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: "Poppins", sans-serif;
+    }
+
+    #display {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 15px;
+      font-size: 24px;
+      text-align: right;
+      padding: 10px;
+      border: 2px solid #FF6B00;
+      border-radius: 8px;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      height: 60px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      background: #eee;
+      border-radius: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background: #ddd;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .operator {
+      background: #FF6B00 !important;
+      color: white;
+    }
+
+    .operator:hover {
+      background: #e55a00 !important;
+    }
+
+    .equals {
+      background: #4CAF50 !important;
+      color: white;
+    }
+
+    .equals:hover {
+      background: #45a049 !important;
+    }
+
+    .clear {
+      background: #f44336 !important;
+      color: white;
+    }
+
+    .clear:hover {
+      background: #da190b !important;
+    }
+
+    .status {
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 14px;
+      min-height: 20px;
+      transition: all 0.3s;
+    }
+
+    .status-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .status-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .status-info {
+      background: #cce7ff;
+      color: #004085;
+      border: 1px solid #b3d7ff;
+    }
+
+    .status-warning {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeaa7;
+    }
+
+    .api-indicator {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #dc3545;
+      animation: pulse 2s infinite;
+    }
+
+    .api-indicator.connected {
+      background: #28a745;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="api-indicator" id="apiIndicator"></div>
+    <div class="title">Welder Calculator</div>
+    
+    <input type="text" id="display" disabled placeholder="0" />
+
+    <div class="buttons">
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button class="operator" onclick="setOperation('dividir')">÷</button>
+
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button class="operator" onclick="setOperation('multiplicar')">×</button>
+
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button class="operator" onclick="setOperation('restar')">-</button>
+
+      <button onclick="appendNumber(0)">0</button>
+      <button onclick="appendDecimal()">.</button>
+      <button class="equals" onclick="calculateResult()">=</button>
+      <button class="operator" onclick="setOperation('sumar')">+</button>
+
+      <button class="clear" onclick="clearDisplay()" style="grid-column: span 2;">Clear</button>
+      <button onclick="backspace()" style="grid-column: span 2;">⌫</button>
+    </div>
+
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="footer">
+    <p>Simple Calculator for Welders </p>
+    <small>Performs quick monetary calculations</small>
+  </div>
+
+  <script>
+    // Enhanced Calculator with API Integration
+    let current = "";
+    let firstNum = null;
+    let operation = null;
+    let apiConnected = false;
+
+    const baseURL = "https://calculator-api-o5d2.onrender.com"; // Your API URL
+
+    // Initialize calculator
+    document.addEventListener('DOMContentLoaded', function() {
+      testAPIConnection();
+      showStatus('Calculator ready', 'info');
+    });
+
+    // Test API connection
+    async function testAPIConnection() {
+      try {
+        const response = await fetch(`${baseURL}/test`, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          apiConnected = true;
+          document.getElementById('apiIndicator').classList.add('connected');
+          showStatus('API Connected ✅', 'success');
+          console.log('API Status:', data);
+        } else {
+          throw new Error('API not responding');
+        }
+      } catch (error) {
+        apiConnected = false;
+        document.getElementById('apiIndicator').classList.remove('connected');
+        showStatus('API Offline - Using local mode', 'warning');
+        console.warn('API connection failed:', error);
+      }
+    }
+
+    // Clean input to prevent CSS/HTML contamination
+    function cleanInput(value) {
+      let clean = String(value).trim();
+      
+      // Remove any potential CSS/HTML contamination
+      clean = clean.replace(/<[^>]*>/g, ''); // Remove HTML tags
+      clean = clean.replace(/[a-zA-Z-]+:\s*[^;]+[;]?/g, ''); // Remove CSS
+      clean = clean.replace(/width:\s*\d+px[;]?/g, ''); // Remove width CSS specifically
+      clean = clean.replace(/[a-zA-Z]/g, ''); // Remove letters
+      
+      // Keep only numbers, decimal point, and minus sign
+      clean = clean.replace(/[^\d.-]/g, '');
+      
+      return clean || '0';
+    }
+
+    function appendNumber(num) {
+      if (current === "0" && num !== 0) {
+        current = String(num);
+      } else {
+        current += String(num);
+      }
+      updateDisplay();
+    }
+
+    function appendDecimal() {
+      if (current === "") current = "0";
+      if (current.indexOf('.') === -1) {
+        current += '.';
+        updateDisplay();
+      }
+    }
+
+    function setOperation(op) {
+      firstNum = current;
+      current = "";
+      operation = op;
+      if (current === "") return;
+      
+      if (firstNum !== null && operation !== null && current !== "") {
+       document.getElementById("display").value += ` ${op}`;
+        calculateResult();
+      }
+      
+      showStatus(`Selected: ${getOperationSymbol(op)}`, 'info');
+    }
+
+    function getOperationSymbol(op) {
+      const symbols = {
+        'sumar': '+',
+        'restar': '-', 
+        'multiplicar': '×',
+        'dividir': '÷'
+      };
+      return symbols[op] || op;
+    }
+
+    async function calculateResult() {
+      if (!firstNum || !operation || current === "") return;
+
+      const cleanFirstNum = cleanInput(firstNum);
+      const cleanCurrent = cleanInput(current);
+
+      showStatus('Calculating...', 'info');
+
+      try {
+        if (apiConnected) {
+          // Try API call first
+          const url = `${baseURL}/${operation}?num1=${encodeURIComponent(cleanFirstNum)}&num2=${encodeURIComponent(cleanCurrent)}`;
+          console.log('API Call:', url);
+          
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.detail || `API Error: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log('API Response:', data);
+
+          if (data.resultado !== undefined) {
+            const result = data.resultado;
+            current = String(result);
+            updateDisplay();
+            showStatus(`${data.expression || cleanFirstNum + ' ' + getOperationSymbol(operation) + ' ' + cleanCurrent + ' = ' + result}`, 'success');
+          } else {
+            throw new Error("Invalid API response format");
+          }
+        } else {
+          throw new Error("API not available");
+        }
+      } catch (apiError) {
+        console.warn('API calculation failed:', apiError);
+        
+        // Fallback to local calculation
+        try {
+          const result = performLocalCalculation(parseFloat(cleanFirstNum), parseFloat(cleanCurrent), operation);
+          current = String(result);
+          updateDisplay();
+          showStatus(`Local: ${cleanFirstNum} ${getOperationSymbol(operation)} ${cleanCurrent} = ${result}`, 'warning');
+        } catch (localError) {
+          console.error('Local calculation failed:', localError);
+          showStatus(`Error: ${localError.message}`, 'error');
+          current = "Error";
+          updateDisplay();
+        }
+      }
+
+      firstNum = null;
+      operation = null;
+    }
+
+    // Local calculation fallback
+    function performLocalCalculation(num1, num2, op) {
+      switch (op) {
+        case "sumar":
+          return num1 + num2;
+        case "restar":
+          return num1 - num2;
+        case "multiplicar":
+          return num1 * num2;
+        case "dividir":
+          if (num2 === 0) throw new Error("Division by zero");
+          return num1 / num2;
+        default:
+          throw new Error("Unknown operation");
+      }
+    }
+
+    function clearDisplay() {
+      current = "";
+      firstNum = null;
+      operation = null;
+      updateDisplay();
+      showStatus('Cleared', 'info');
+    }
+
+    function backspace() {
+      if (current.length > 0) {
+        current = current.slice(0, -1);
+        updateDisplay();
+      }
+    }
+
+    function updateDisplay() {
+      const display = document.getElementById("display");
+      display.value = current || "0";
+    }
+
+    function showStatus(message, type) {
+      const statusElement = document.getElementById('status');
+      statusElement.textContent = message;
+      statusElement.className = `status status-${type}`;
+      
+      // Auto-hide after 3 seconds for non-error messages
+      if (type !== 'error') {
+        setTimeout(() => {
+          statusElement.textContent = '';
+          statusElement.className = 'status';
+        }, 3000);
+      }
+    }
+
+    // Keyboard support
+    document.addEventListener('keydown', function(event) {
+      if (event.key >= '0' && event.key <= '9') {
+        appendNumber(parseInt(event.key));
+      } else if (event.key === '.') {
+        appendDecimal();
+      } else if (event.key === '+') {
+        setOperation('sumar');
+      } else if (event.key === '-') {
+        setOperation('restar');
+      } else if (event.key === '*') {
+        setOperation('multiplicar');
+      } else if (event.key === '/') {
+        event.preventDefault(); // Prevent browser search
+        setOperation('dividir');
+      } else if (event.key === 'Enter' || event.key === '=') {
+        event.preventDefault();
+        calculateResult();
+      } else if (event.key === 'Escape' || event.key === 'c' || event.key === 'C') {
+        clearDisplay();
+      } else if (event.key === 'Backspace') {
+        backspace();
+      }
+    });
+
+    // Retry API connection every 30 seconds if disconnected
+    setInterval(() => {
+      if (!apiConnected) {
+        testAPIConnection();
+      }
+    }, 30000);
+  </script>
+</body>
+</html>
+
+
+
+
