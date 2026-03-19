@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industrial Object Measurement Tool</title>
+    <title>Measurement Tool - Welders Kit</title>
     <link rel="stylesheet" href="ruler.css">
-    <script src="ruler.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>Measurement Tool</h1>
-            <p>Measure pipes, welding tools, and industrial equipment with precision</p>
+            <p>Measure pipes, welding materials & equipment with precision</p>
         </div>
 
         <div class="main-content">
@@ -23,70 +23,71 @@
                 
                 <div class="controls">
                     <button id="startCamera" class="btn btn-primary">
-                        📹 Start Camera
+                        <i class="bi bi-camera"></i> Start Camera
                     </button>
                     <button id="captureBtn" class="btn btn-secondary" disabled>
-                        📸 Capture Frame
-                    </button>
-                    <button id="clearBtn" class="btn btn-danger">
-                        🗑️ Clear Measurements
+                        <i class="bi bi-camera-fill"></i> Capture
                     </button>
                     <button id="autoDetect" class="btn btn-primary" disabled>
-                        🤖 Auto Detect
+                        <i class="bi bi-magic"></i> Auto Detect
+                    </button>
+                    <button id="clearBtn" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Clear
                     </button>
                 </div>
 
                 <div id="status" class="status info">
-                    Click "Start Camera" to begin measuring objects
+                    📍 Click "Start Camera" to begin measuring
                 </div>
             </div>
 
             <div class="sidebar">
                 <div class="calibration-section">
-                    <h4> Calibration</h4>
-                    <p>Place a reference object (coin, ruler) and set its real size:</p>
+                    <h4>🎯 Calibration</h4>
+                    <p>Place a reference object (coin, ruler) and enter its size:</p>
                     <input type="number" id="referenceSize" class="calibration-input" 
-                           placeholder="Reference size (mm)" step="0.1">
-                    <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
-                        Click two points on the reference object to calibrate
+                           placeholder="Reference size (mm)" step="0.1" min="1">
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #555;">
+                        Click 2 points on the reference object to calibrate
                     </p>
                 </div>
 
                 <div class="measurement-card">
-                    <h3> Measurements</h3>
+                    <h3>📊 Measurements</h3>
                     <div class="measurement-item">
-                        <span class="measurement-label">Length:</span>
+                        <span class="measurement-label">Length</span>
                         <span id="lengthValue" class="measurement-value">-- mm</span>
                     </div>
                     <div class="measurement-item">
-                        <span class="measurement-label">Diameter:</span>
+                        <span class="measurement-label">Diameter</span>
                         <span id="diameterValue" class="measurement-value">-- mm</span>
                     </div>
                     <div class="measurement-item">
-                        <span class="measurement-label">Thickness:</span>
+                        <span class="measurement-label">Thickness</span>
                         <span id="thicknessValue" class="measurement-value">-- mm</span>
                     </div>
                     <div class="measurement-item">
-                        <span class="measurement-label">Pixels/mm:</span>
+                        <span class="measurement-label">Scale</span>
                         <span id="scaleValue" class="measurement-value">--</span>
                     </div>
                 </div>
 
                 <div class="instructions">
-                    <h4>How to Use</h4>
+                    <h4>📋 Quick Guide</h4>
                     <ol>
-                        <li>Start camera and place object in view</li>
-                        <li>Add reference object (coin/ruler)</li>
-                        <li>Enter reference size in mm</li>
-                        <li>Click two points on reference to calibrate</li>
-                        <li>Click points on your object to measure</li>
-                        <li>Use Auto Detect for automatic measurement</li>
+                        <li>Tap <strong>Start Camera</strong></li>
+                        <li>Place reference object in frame</li>
+                        <li>Enter size in millimeters</li>
+                        <li>Click 2 points on reference to calibrate</li>
+                        <li>Click points on object to measure</li>
+                        <li>Use <strong>Auto Detect</strong> for quick measurement</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://docs.opencv.org/4.=8.0/opencv.js"></script>
+    <script src="ruler.js"></script>
+    <script src="https://docs.opencv.org/4.8.0/opencv.js"></script>
 </body>
 </html>
