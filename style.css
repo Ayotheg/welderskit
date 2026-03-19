@@ -292,7 +292,9 @@
     font-size: 22px;
 
   }
-
+.git{
+  text-decoration: underline !important;
+}
   .table-content>ul {
     display: block !important;
     color: #000000 !important;
