@@ -3,63 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welders Kit </title>
+    <title>Blog | Welders Kit</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog.css">
     <link rel="stylesheet" href="redirect.css">
-      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
-          <!--Do not display-->
-               <div class="desktop-message">
-                <!-- Desktop-specific message goes here -->
-                <div class="typewriter">
+    <!-- Desktop Message -->
+    <div class="desktop-message">
+        <div class="typewriter">
+            <img src="img/adobe-express-qr-code.png" alt="Anime Welder" class="illustration">
+            <h1>Welcome, Welders!</h1>
+            <p>🔥 Best experienced on your mobile device</p>
+            <p style="color: #999; font-size: 14px; max-width: 400px;">
+                For the best experience, please open this site on your smartphone or scan the QR code above
+            </p>
+            <div class="qr-hint">
+                <p>📱 Scan with your phone:</p>
+                <p style="color: #FF6B00; font-weight: bold; margin-top: 10px;">
+                    Or visit: https://ayotheg.github.io/welderskit
+                </p>
+            </div>
+            <footer>© 2025 Welders Toolkit</footer>
+        </div>
+    </div>
 
-  <!-- Simple anime/cartoon-style illustration placeholder -->
-  <img src="img/anime-removebg-.png" alt="Anime Welder" class="illustration">
+    <!-- Mobile Content -->
+    <div class="mobile-content">
+        <div class="container-fluid blog-container">
 
-  <h1>Welcome, Welders!</h1>
-  <p>Best experienced on your mobile device</p>
+            <!-- Back Arrow -->
+            <a class="blog-back-arrow" href="page.html">
+                <i class="bi bi-arrow-left"></i>
+            </a>
 
-  <!-- Button to redirect -->
-  <a href="" class="btn">Switch to your mobile device</a>
+            <!-- Blog Header -->
+            <div class="blog-header">
+                <h1 class="blog-title">Blog</h1>
+                <p class="blog-subtitle">Learn, grow, and master your craft</p>
+            </div>
 
-  <footer>© 2025 Welders Toolkit</footer>
-                </div>
-                </div>
-                <!--Do not display-->
+            <!-- Blog Cards -->
+            <div class="blog-cards">
 
-
-                <!--Mobile Content-->
-                <div class="mobile-content">
-                    <div class="container-fluid">
-                            <!-- Back Arrow -->
-                                  <a class="arrow" href="page.html">
-                                   <i class='bx bxs-left-arrow'></i>
-                                    </a>
-                        <div class="table">
-                            <div class="table-content" id="animate">
-                                <h2>TABLE OF CONTENT</h2>
-                                <ul>
-                                    <li>
-                                        <a href="safety.html" style="color: #FF6B00 !important;">Getting Started</a>
-                                        <a href="kit.html" style="color: #FF6B00  !important;">Kit for Beginner Welders</a>
-                                        <a href="blog-article2.html" style="color:#FF6B00 !important;">Safety Precautions</a>
-                                        <a href="blog-article3.html" style="color:#FF6B00 !important;">Tips for getting a client</a>
-                                        <a href="blog-article.html" style="color:#FF6B00 !important;">How to report a suspicious client</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                <a href="safety.html" class="blog-card" id="blog-card-1">
+                    <div class="blog-card-icon">
+                        <i class="bi bi-rocket-takeoff-fill"></i>
                     </div>
-                </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">Getting Started</h3>
+                        <p class="blog-card-desc">Everything you need to know to begin your welding journey.</p>
+                    </div>
+                    <i class="bi bi-chevron-right blog-card-arrow"></i>
+                </a>
 
-                <!--Tags-->
-                 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js" integrity="sha512-8BkFnMa5pqmphA7XoSbkjP2qX7Gqlkel2C+p1g1AH1tW4cBJs2tumC0Zn9eNRBOKbe3dW9OtbYh/vpkGuZNTMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" ></script>
-         <script src="script.js"></script>
-         <script src="gsap.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <a href="kit.html" class="blog-card" id="blog-card-2">
+                    <div class="blog-card-icon">
+                        <i class="bi bi-tools"></i>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">Kit for Beginners</h3>
+                        <p class="blog-card-desc">Essential tools and gear every beginner welder needs.</p>
+                    </div>
+                    <i class="bi bi-chevron-right blog-card-arrow"></i>
+                </a>
+
+                <a href="blog-article2.html" class="blog-card" id="blog-card-3">
+                    <div class="blog-card-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">Safety Precautions</h3>
+                        <p class="blog-card-desc">Stay safe with these critical welding safety guidelines.</p>
+                    </div>
+                    <i class="bi bi-chevron-right blog-card-arrow"></i>
+                </a>
+
+                <a href="blog-article3.html" class="blog-card" id="blog-card-4">
+                    <div class="blog-card-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">Getting Clients</h3>
+                        <p class="blog-card-desc">Tips and strategies to attract and retain clients.</p>
+                    </div>
+                    <i class="bi bi-chevron-right blog-card-arrow"></i>
+                </a>
+
+                <a href="blog-article.html" class="blog-card" id="blog-card-5">
+                    <div class="blog-card-icon">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">Report a Client</h3>
+                        <p class="blog-card-desc">How to identify and report suspicious clients safely.</p>
+                    </div>
+                    <i class="bi bi-chevron-right blog-card-arrow"></i>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script src="gsap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* ===== Base ===== */
 .mobile-content {
   display: none;
 }
@@ -18,81 +17,196 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-align: center;
-  list-style-type: none;
-  text-decoration: none;
-  overflow-x: hidden !important;
-
+  font-family: "Poppins", sans-serif !important;
+  font-style: normal;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  /* ensures images don’t stretch */
-}
+@media (max-width: 600px) {
 
-
-@media (max-width:600px) {
-  * {
-
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-    text-decoration: none;
+  html {
     overflow-x: hidden !important;
-    color: #000000 !important;
-    background: #fff !important;
   }
 
   body {
-    overflow-x: hidden !important;
-    font-family: "Poppins", sans-serif;
-    font-weight: 450;
-    font-style: normal;
-    text-decoration: none;
-    list-style-type: none;
-    color: #000000 !important;
-    background: #fff !important;
+    position: relative;
+    background-color: #121212 !important;
+    font-family: "Poppins", sans-serif !important;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
-  #lang-switcher {
-    display: flex;
-    gap: 5px;
-    font-size: 5px;
+  body::before {
+    content: "";
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    width: 110vw;
+    height: 110vh;
+    background: radial-gradient(circle at top, rgba(255, 107, 0, 0.25) 0%, rgba(18, 18, 18, 0.95) 75%),
+      url('img/welding-bg.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.7);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* ===== Blog Container ===== */
+  .blog-container {
+    padding: 20px 20px 40px;
+    position: relative;
+  }
+
+  /* ===== Back Arrow ===== */
+  .blog-back-arrow {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: #FF6B00 !important;
+    font-size: 1.3rem;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
   }
 
-  #lang-switcher p {
-    color: #FF6B00 !important;
+  .blog-back-arrow:hover {
+    background: rgba(255, 107, 0, 0.2);
+    transform: translateX(-3px);
   }
 
+  /* ===== Blog Header ===== */
+  .blog-header {
+    text-align: left;
+    margin-bottom: 28px;
+    padding-left: 4px;
+  }
 
+  .blog-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FF6B00 !important;
+    text-shadow: 0 0 8px rgba(255, 107, 0, 0.3);
+    margin-bottom: 4px;
+    text-align: left !important;
+  }
 
-  .d-flex {
+  .blog-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-weight: 300;
+    text-align: left !important;
+  }
+
+  /* ===== Blog Cards ===== */
+  .blog-cards {
+    display: flex;
     flex-direction: column;
-    /* stack image + text vertically */
-    text-align: center;
+    gap: 14px;
   }
 
-  .d-flex>div {
-    flex: unset !important;
-    /* remove forced flex:2, flex:1 */
-    width: 100%;
+  .blog-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 16px;
+    background: rgba(255, 255, 255, 0.06) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 107, 0, 0.15);
+    border-radius: 14px;
+    text-decoration: none !important;
+    color: #fff !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
 
-  h5 {
-    font-size: 16px;
+  .blog-card:hover,
+  .blog-card:focus {
+    background: rgba(255, 107, 0, 0.12) !important;
+    border-color: rgba(255, 107, 0, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 0, 0.15);
+  }
+
+  .blog-card:visited {
+    color: #fff !important;
+  }
+
+  /* Card Icon */
+  .blog-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 12px;
+    background: rgba(255, 107, 0, 0.85);
+    color: #000 !important;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  /* Card Body */
+  .blog-card-body {
+    flex: 1;
+    text-align: left !important;
+    min-width: 0;
+  }
+
+  .blog-card-title {
+    font-size: 1rem;
     font-weight: 600;
+    color: #fff !important;
+    margin-bottom: 2px;
+    text-align: left !important;
   }
 
-  p {
-    font-size: 14px;
-    font-family: "Poppins", sans-serif;
-    color: #555;
+  .blog-card-desc {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.45) !important;
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0;
+    text-align: left !important;
   }
 
+  /* Card Arrow */
+  .blog-card-arrow {
+    color: rgba(255, 107, 0, 0.6) !important;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
 
+  .blog-card:hover .blog-card-arrow {
+    color: #FF6B00 !important;
+    transform: translateX(3px);
+  }
+
+  /* ===== Stagger animation (GSAP-like with CSS) ===== */
+  .blog-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: blogCardIn 0.5s ease forwards;
+  }
+
+  #blog-card-1 { animation-delay: 0.1s; }
+  #blog-card-2 { animation-delay: 0.2s; }
+  #blog-card-3 { animation-delay: 0.3s; }
+  #blog-card-4 { animation-delay: 0.4s; }
+  #blog-card-5 { animation-delay: 0.5s; }
+
+  @keyframes blogCardIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
