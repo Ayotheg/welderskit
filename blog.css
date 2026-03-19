@@ -55,6 +55,14 @@ img {
     color: #333 !important;
     background: #fff !important;
     padding: 0;
+    min-height: 100vh;
+  }
+
+  /* Kills the dark blurred 'welding-bg' overlay from style.css so the page is fully white */
+  body::before {
+    display: none !important;
+    background: none !important;
+    content: none !important;
   }
 
   #lang-switcher {
@@ -149,6 +157,7 @@ img {
     position: relative;
     z-index: 10;
     background: #fff !important;
+    min-height: 100vh;
   }
 
   .blog-back-arrow {
@@ -314,4 +323,3 @@ img {
       transform: translateY(0);
     }
   }
-}
