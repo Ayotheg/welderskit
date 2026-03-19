@@ -11,17 +11,17 @@
 </head>
 <body>
    
-  <!-- Desktop Message (shown only on tablets/desktops) -->
+  <!-- Desktop Message -->
   <div class="desktop-message">
     <div class="typewriter">
-      <img src="img/adobe-express-qr-code.png" alt="Anime Welder" class="illustration">
+      <img src="img/adobe-express-qr-code.png" alt="Anim  e Welder" class="illustration">
       <h1>Welcome, Welders!</h1>
       <p>🔥 Best experienced on your mobile device</p>
       <p style="color: #999; font-size: 14px; max-width: 400px;">
         For the best experience, please open this site on your smartphone or scan the QR code above
       </p>
       
-      <!-- Optional: Add QR Code here -->
+      <!-- QR Code  -->
       <div class="qr-hint">
         <p>📱 Scan with your phone:</p>
         <!-- <img src="qr-code.png" alt="QR Code" style="width: 150px; margin-top: 10px;"> -->
@@ -55,7 +55,7 @@
       <!-- Second Row -->
       <div id="menu-grid-main2">
         <div class="menu-grid-2">
-          <div class="grid-items"><i class="bi bi-shop"></i> <h4 class="grid-text"><a href="geo:6.6150,3.3250?q=building+materials+shops" target="_blank">Stores Near Me</a></h4></div>
+          <div class="grid-items"><i class="bi bi-shop"></i> <h4 class="grid-text"><a href="https://maps.google.com/maps?q=building+materials+shops&ll=6.6150,3.3250" target="_blank" >Stores <br>Near Me</a></h4></div>
           <div class="grid-items"><i class="bi bi-receipt-cutoff"></i> <h4 class="grid-text"><a href="invoice.html">Invoice</a></h4></div>
         </div>
       </div>
@@ -78,6 +78,24 @@
     </div>
   </div>
   </div>
+
+  <!-- Floating Chat Button (left side) -->
+  <div id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with us">
+    <i class="bi bi-chat-dots-fill"></i>
+  </div>
+
+  <!-- Chatbot Popup Container -->
+  <div id="chatbot-popup" class="chatbot-popup-hidden">
+    <iframe
+      id="chatbot-frame"
+      src=""
+      data-src="https://www.chatbase.co/chatbot-iframe/jsxLtRBnnGxVXRdr-XG0K"
+      width="100%"
+      height="100%"
+      frameborder="0"
+    ></iframe>
+  </div>
+
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js"></script>

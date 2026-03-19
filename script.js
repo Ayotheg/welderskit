@@ -110,3 +110,24 @@ function setLanguage(lang) {
 }
 
 
+/* ===== Chatbot Toggle ===== */
+function toggleChatbot() {
+  const popup = document.getElementById("chatbot-popup");
+  const frame = document.getElementById("chatbot-frame");
+
+  if (!popup) return;
+
+  const isHidden = popup.classList.contains("chatbot-popup-hidden");
+
+  if (isHidden) {
+    // Lazy-load the iframe src on first open
+    if (!frame.src || frame.src === "" || frame.src === window.location.href) {
+      frame.src = frame.getAttribute("data-src");
+    }
+    popup.classList.remove("chatbot-popup-hidden");
+    popup.classList.add("chatbot-popup-visible");
+  } else {
+    popup.classList.remove("chatbot-popup-visible");
+    popup.classList.add("chatbot-popup-hidden");
+  }
+}

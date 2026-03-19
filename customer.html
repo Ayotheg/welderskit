@@ -54,7 +54,7 @@
       <!-- Second Row -->
       <div id="menu-grid-main2">
         <div class="menu-grid-2">
-          <div class="grid-items"><i class="bi bi-shop"></i> <h4 class="grid-text"><a href="geo:6.6150,3.3250?q=welders+shops" target="_blank">Welders <br>Nearby</a></h4></div>
+          <div class="grid-items"><i class="bi bi-shop"></i> <h4 class="grid-text"><a href="https://maps.google.com/maps?q=welders+shops&ll=6.6150,3.3250" target="_blank">Welders <br>Nearby</a></h4></div>
           <div class="grid-items"><i class="bi bi-calculator"></i> <h4 class="grid-text"><a href="calculator.html">Calculator</a></h4></div>
           
       </div>
@@ -62,7 +62,7 @@
       <!-- Third Row -->
       <div id="menu-grid-main3">
         <div class="menu-grid-3">
-                      <div class="grid-items"><i class="bi bi-bug-fill"></i> <h4 class="grid-text"><a href="defector.html">Defector</a></h4></div>
+                      <div class="grid-items"><i class="bi bi-bug-fill"></i> <h4 class="grid-text"><a href="defector.html"></a>Defector</h4></div>
           <div class="grid-items"><i class="bi bi-journal-text"></i> <h4 class="grid-text"><a href="customer-blog.html">Blog</a></h4></div>
         </div>
       </div>
@@ -77,7 +77,27 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
+
+  <!-- Floating Chat Button (left side) -->
+  <div id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with us">
+    <i class="bi bi-chat-dots-fill"></i>
+  </div>
+
+  <!-- Chatbot Popup Container -->
+  <div id="chatbot-popup" class="chatbot-popup-hidden">
+    <iframe
+      id="chatbot-frame"
+      src=""
+      data-src="https://www.chatbase.co/chatbot-iframe/jsxLtRBnnGxVXRdr-XG0K"
+      width="100%"
+      height="100%"
+      frameborder="0"
+    ></iframe>
+  </div>
+
+
+
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js"></script>
