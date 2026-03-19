@@ -78,6 +78,28 @@
     </div>
   </div>
   </div>
+
+  <!-- Floating Chat Button (left side) -->
+  <div id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with us">
+    <i class="bi bi-chat-dots-fill"></i>
+  </div>
+
+  <!-- Chatbot Popup Container -->
+  <div id="chatbot-popup" class="chatbot-popup-hidden">
+    <div id="chatbot-popup-header">
+      <span>💬 Chat with us</span>
+      <button id="chatbot-close-btn" onclick="toggleChatbot()" aria-label="Close chat">&times;</button>
+    </div>
+    <iframe
+      id="chatbot-frame"
+      src=""
+      data-src="https://www.chatbase.co/chatbot-iframe/jsxLtRBnnGxVXRdr-XG0K"
+      width="100%"
+      height="100%"
+      frameborder="0"
+    ></iframe>
+  </div>
+
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js"></script>

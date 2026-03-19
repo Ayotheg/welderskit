@@ -64,7 +64,7 @@
     height: 110vh;
     /* Adding a glowing orange radial gradient paired with an industrial welding image */
     background: radial-gradient(circle at top, rgba(255, 107, 0, 0.25) 0%, rgba(18, 18, 18, 0.95) 75%),
-      url('https://images.unsplash.com/photo-1542567455-cd733fc4a3a3?q=80&w=1080&auto=format&fit=crop');
+      url('img/welding-bg.png');
     background-size: cover;
     background-position: center;
     /* Heavy blur and darkening to keep it readable and premium */
@@ -355,5 +355,107 @@
     color: #FF6B00;
   }
 
+  /* ===== Chatbot Floating Button ===== */
+  #chatbot-toggle {
+    position: fixed;
+    bottom: 24px;
+    left: 18px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF6B00, #ff9a44);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 4px 20px rgba(255, 107, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: chatPulse 2.5s infinite;
+  }
 
+  #chatbot-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(255, 107, 0, 0.7);
+  }
+
+  @keyframes chatPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(255, 107, 0, 0.4); }
+    50% { box-shadow: 0 4px 30px rgba(255, 107, 0, 0.8); }
+  }
+
+  /* ===== Chatbot Popup ===== */
+  #chatbot-popup {
+    position: fixed;
+    bottom: 90px;
+    left: 18px;
+    width: 340px;
+    height: 480px;
+    max-width: calc(100vw - 36px);
+    max-height: calc(100vh - 120px);
+    background: #1e1e1e;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 10001;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 107, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: bottom left;
+  }
+
+  #chatbot-popup.chatbot-popup-hidden {
+    opacity: 0;
+    transform: scale(0.4) translateY(20px);
+    pointer-events: none;
+  }
+
+  #chatbot-popup.chatbot-popup-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+
+  #chatbot-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #FF6B00, #ff9a44);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  #chatbot-close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+    transition: transform 0.2s ease;
+  }
+
+  #chatbot-close-btn:hover {
+    transform: scale(1.2);
+  }
+
+  #chatbot-frame {
+    flex: 1;
+    border: none;
+    background: #fff;
+  }
+}
+
+/* ===== Chatbot styles for screens above 600px (desktop/tablet) ===== */
+#chatbot-toggle {
+  display: none;
+}
+#chatbot-popup {
+  display: none;
 }
