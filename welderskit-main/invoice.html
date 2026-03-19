@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welders Kit </title>
+    <link rel="stylesheet" href="invoice.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+  
+                <!--Mobile Content-->
+                <div class="mobile-content">
+                    <div class="container-fluid">
+
+ <div class="invoice-container">
+        <header>
+            <h1>Welder's Invoice</h1>
+            <p>Quotation & Invoice Generator</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('create')">Create Invoice</button>
+        </div>
+
+        <!-- Create Invoice Tab -->
+        <div id="createTab" class="tab-content active">
+            <div id="apiStatus" class="api-status" style="display: none;"></div>
+            
+            <form id="invoiceForm">
+                <!-- Business Info -->
+                <section class="section">
+                    <h2>Your Business Info</h2>
+                    <div class="form-row">
+                        <div>
+                            <label>Business Name</label>
+                            <input type="text" name="businessName" placeholder="Your Welding Business" required>
+                        </div>
+                        <div>
+                            <label>Email</label>
+                            <input type="email" name="businessEmail" placeholder="business@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label>Phone</label>
+                            <input type="tel" name="businessPhone" placeholder="+234 800 000 0000">
+                        </div>
+                        <div>
+                            <label>Address</label>
+                            <input type="text" name="businessAddress" placeholder="Business Address">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Customer Info -->
+                <section class="section customer">
+                    <h2>Customer Info</h2>
+                    <div class="form-row">
+                        <div>
+                            <label>Customer Name</label>
+                            <input type="text" name="customerName" placeholder="Customer Name" required>
+                        </div>
+                        <div>
+                            <label>Customer Email</label>
+                            <input type="email" name="customerEmail" placeholder="customer@email.com">
+                        </div>
+                    </div>
+                    <label>Customer Address</label>
+                    <textarea name="customerAddress" placeholder="Customer Address" rows="3"></textarea>
+                </section>
+
+                <!-- Items -->
+                <section class="section items">
+                    <h2>Items</h2>
+                    <div id="items">
+                        <div class="item">
+                            <input type="text" name="description" placeholder="Material (e.g. 3'' Pipe)" required>
+                            <input type="number" name="quantity" placeholder="Qty" min="1" required>
+                            <input type="number" name="price" placeholder="Unit Price (₦)" min="0" step="0.01" required>
+                            <button type="button" class="remove-item" onclick="removeItem(this)">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" id="addItem">+ Add Item</button>
+                </section>
+
+                <!-- Invoice Details -->
+                <section class="section">
+                    <h2>Invoice Details</h2>
+                    <div class="form-row">
+                        <div>
+                            <label>Type</label>
+                            <select name="type">
+                                <option value="invoice">Invoice</option>
+                                <option value="quote">Quotation</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Due Date</label>
+                            <input type="date" name="dueDate">
+                        </div>
+                    </div>
+                    <label>Notes (Optional)</label>
+                    <textarea name="notes" placeholder="Payment terms, additional notes..." rows="3"></textarea>
+                </section>
+
+                <!-- Submit -->
+                <footer>
+                    <button type="submit" class="generate-btn">Generate Invoice</button>
+                </footer>
+            </form>
+        </div>
+
+    
+                    </div>
+                </div>
+
+
+                <!--Tags-->
+                 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js" integrity="sha512-8BkFnMa5pqmphA7XoSbkjP2qX7Gqlkel2C+p1g1AH1tW4cBJs2tumC0Zn9eNRBOKbe3dW9OtbYh/vpkGuZNTMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" ></script>
+         <script src="invoice.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+        
+         <!-- <script src="gsap.js"></script> -->
+         <script src="js/bootstrap.bundle.js"></script> 
+</body>
+</html>

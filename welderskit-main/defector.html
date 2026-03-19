@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welder's Kit - Photo Defect Detection</title>
+    <link rel="stylesheet" href="defector.css">
+    <script defer src="defector.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welder's Kit</h1>
+            <p>Analyze welding defects quickly</p>
+        </div>
+
+        <div class="detection-container">
+            <div class="camera-section">
+                <div class="camera-wrapper">
+                    <video id="video" autoplay playsinline muted></video>
+                    <canvas id="canvas"></canvas>
+                </div>
+                
+                <div class="camera-controls">
+                    <button class="btn secondary" id="captureBtn" onclick="capturePhoto()">
+                        Capture Photo
+                    </button>
+                    <button class="btn" id="analyzeBtn" onclick="analyzePhoto()" disabled>
+                         Analyze Defects
+                    </button>
+                    <button class="btn danger" id="retakeBtn" onclick="retakePhoto()" style="display:none;">
+                         Retake Photo
+                    </button>
+                </div>
+
+                <div class="file-upload">
+                    <div class="file-input-wrapper">
+                        <input type="file" id="fileInput" accept="image/*" onchange="loadImage(event)">
+                        <label for="fileInput" class="file-input-label">
+                            📁 Upload Image Instead
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="status-card">
+                    <h3>
+                        <span class="status-indicator active" id="statusIndicator"></span>
+                        Status
+                    </h3>
+                    <div id="status">Camera ready. Capture a photo to analyze defects.</div>
+                    
+                    <div class="detection-stats" id="stats" style="display: none;">
+                        <div class="stat-item">
+                            <span class="stat-label">Defects Found:</span>
+                            <span class="stat-value" id="totalDefects">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Highest Confidence:</span>
+                            <span class="stat-value" id="highestConfidence">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">API Status:</span>
+                            <span class="stat-value" id="apiStatus">Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-card" id="resultsCard" style="display: none;">
+                    <h3>🚨 Detected Defects</h3>
+                    <div id="defectsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+  </html>

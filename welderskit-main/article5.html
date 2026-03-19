@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Welder's Kit: Bridging Tradition and Technology</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style-type: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        .container-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+ .header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 10px 0;
+  border-bottom: none;
+  background: none;
+  box-shadow: none;
+  pointer-events: none; /* Prevents overshadowing/click blocking */
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #FF6B00;
+  margin-bottom: 0;
+  text-shadow:
+    0 0 6px #FF6B00,
+    0 0 12px #FF6B00;
+  pointer-events: auto;
+}
+
+        /* Back Arrow */
+        .arrow {
+            display: inline-block;
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .arrow:hover {
+            transform: translateX(-5px);
+            color: #FF6B00;
+        }
+
+        /* Article Title */
+        .text-head {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Featured Image */
+        .article-image-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            border: 3px solid #FF6B00;
+            box-shadow: 0 0 20px rgba(255, 176, 0, 0.3);
+        }
+
+        .figcaption {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Content Styling */
+        .content {
+            font-family: "Playfair Display", serif;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin: 40px 0;
+        }
+
+        .content h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 40px 0 20px;
+            border-left: 5px solid #FF6B00;
+            padding-left: 15px;
+        }
+
+        .content h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 30px 0 15px;
+        }
+
+        .content h4 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 25px 0 15px;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+        }
+
+        .content ul, .content ol {
+            margin: 20px 0 20px 30px;
+            color: #e0e0e0;
+        }
+
+        .content ul {
+            list-style-type: disc;
+        }
+
+        .content ol {
+            list-style-type: decimal;
+        }
+
+        .content li {
+            margin-bottom: 15px;
+        }
+
+        .content ul li {
+            list-style-type: disc;
+        }
+
+        .content ol li {
+            list-style-type: decimal;
+        }
+
+        .content strong {
+            color: #FF6B00;
+            font-weight: 600;
+        }
+
+        /* Welcome Banner */
+
+        .welcome-banner p {
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Dual Purpose Box */
+        .dual-purpose-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .purpose-box {
+            background: linear-gradient(135deg, #1a1a2d 0%, #2d2d40 100%);
+            border: 2px solid #FF6B00;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .purpose-box h3 {
+            color: #fff;
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .purpose-box ul {
+            margin-left: 0;
+            padding-left: 20px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #1a1a2d 0%, #2d2d40 100%);
+            border-left: 4px solid #FF6B00;
+            padding: 25px;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 176, 0, 0.3);
+        }
+
+        .feature-card h4 {
+            color: #FF6B00;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Steps Box */
+        .steps-box {
+            background: linear-gradient(135deg, #1a2d1a 0%, #203d20 100%);
+            border-left: 4px solid #4CAF50;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 12px;
+        }
+
+        .steps-box h3 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+
+        .steps-box ol {
+            margin-left: 0;
+            padding-left: 20px;
+        }
+
+        /* AI Highlight Box */
+        .ai-box {
+            background: linear-gradient(135deg, #1a1a3d 0%, #2d2d5d 100%);
+            border: 3px solid #00bcd4;
+            padding: 35px;
+            margin: 35px 0;
+            border-radius: 15px;
+        }
+
+        .ai-box h2 {
+            color: #00bcd4;
+            border: none;
+            padding: 0;
+        }
+
+        .ai-box ul {
+            margin-left: 0;
+            padding-left: 20px;
+        }
+
+        .ai-box li strong {
+            color: #4dd0e1;
+        }
+
+        /* Community CTA */
+        .community-cta {
+            background: linear-gradient(135deg, #ffb000 0%, #ff8c00 100%);
+            color: #000;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 15px 40px rgba(255, 176, 0, 0.5);
+        }
+
+        .community-cta h2 {
+            color: #000;
+            margin: 0 0 20px;
+            border: none;
+            padding: 0;
+            font-size: 2rem;
+        }
+
+        .community-cta p {
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .text-head {
+                font-size: 1.3rem;
+                padding: 0 15px;
+            }
+
+            .content {
+                font-size: 1rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content h3 {
+                font-size: 1.2rem;
+            }
+
+            .dual-purpose-container {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .img {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <h1>Welder's Kit</h1>
+        </div>
+
+        <!-- Back Arrow -->
+        <a class="arrow" href="customer-blog.html">
+            <i class='bx bxs-left-arrow'></i>
+        </a>
+
+        <!-- Article Title -->
+        <h1 class="text-head">Welcome to Welder's Kit: Bridging Tradition and Technology</h1>
+
+              <!-- Featured Image -->
+        <div class="article-image-container">
+            <img class="img" src="img/getting-started.jpg" alt="Welder's Kit platform connecting welders and customers">
+            <figcaption class="figcaption">Source:Image fx</figcaption>
+        </div>
+
+        <!-- Article Content -->
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h4>Ruler Tool</h4>
+                    <p>Ensure your welding measurements are accurate with our on-screen measuring tool.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h4>Defector Tool</h4>
+                    <p>Snap a photo or upload a welding image, and let our AI detect any faults automatically, providing significant quality assurance for your projects.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h4>Welders Nearby</h4>
+                    <p>Locate welders in your vicinity in real-time. Just enter your location and discover expert welders ready to assist!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h4>Welding Calculator</h4>
+                    <p>Calculate material requirements and project costs effortlessly.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h4>Marketplace</h4>
+                    <p>A dedicated space where welders can display their portfolios, receive verified badges, and provide contact details for easy customer access.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏪</div>
+                    <h4>Materials Shops Nearby</h4>
+                    <p>Find trusted building materials suppliers in your area for safe, direct purchases.</p>
+                </div>
+            </div>
+
+        
+
+            <h2>Our Commitment to Safety</h2>
+            <p>
+                At Welder's Kit, we take safety seriously. We are a <strong>directory service only</strong> and never handle payments, escrow services, or money transfers. Anyone claiming to collect payments on behalf of Welder's Kit is a scammer. All transactions should happen directly between you and the welder after proper verification.
+            </p>
+
+            <h2>Get Started Today</h2>
+            <p>
+                Ready to experience the future of welding services in Nigeria? Whether you're a welder looking to expand your reach or a customer seeking quality welding services, Welder's Kit is your trusted partner.
+            </p>
+            <p>
+                <strong>For Welders:</strong> Sign up today, get verified, and start showcasing your expertise to thousands of potential customers.
+            </p>
+            <p>
+                <strong>For Customers:</strong> Browse our verified welders, use our AI tools, and find the perfect professional for your next project.
+            </p>
+            <p>
+                Together, we're building a stronger, safer, and more innovative welding community in Nigeria. Welcome to Welder's Kit—where tradition meets technology! 🔥
+            </p>
+        </div>
+    </div>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
