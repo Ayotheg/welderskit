@@ -25,7 +25,7 @@ texts.forEach(textObj => {
   });
 });
 const text2 = [
-  { value: "Maraba, Abokin Ciniki", newClass: "text5" },
+  { value: "Maraba, Abokin Ciniki!", newClass: "text5" },
   { value: "Nnọọ, Ndị Azụmaahịa!", newClass: "text6" },
   { value: "Welcome, Customers!", newClass: "text7" }
 ];
