@@ -1,10 +1,11 @@
-const CACHE_NAME = "welderskit-v2";
+const CACHE_NAME = "welderskit-v3";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/style.css",
   "/redirect.css",
   "/script.js",
+  "/geo-search.js",
   "/gsap.js",
   "/gsap2.js",
   "/login.html",
