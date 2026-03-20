@@ -3,65 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welders Kit </title>
+    <title>Customer Blog | Welders Kit</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog.css">
     <link rel="stylesheet" href="redirect.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
-          <!--Do not display-->
-               <div class="desktop-message">
-                <!-- Desktop-specific message goes here -->
-                <div class="typewriter">
+    <!-- Desktop Message -->
+    <div class="desktop-message">
+        <div class="typewriter">
+            <img src="img/adobe-express-qr-code.png" alt="Anime Welder" class="illustration">
+            <h1>Welcome, Welders!</h1>
+            <p>🔥 Best experienced on your mobile device</p>
+            <p style="color: #999; font-size: 14px; max-width: 400px;">
+                For the best experience, please open this site on your smartphone or scan the QR code above
+            </p>
+            <div class="qr-hint">
+                <p>📱 Scan with your phone:</p>
+                <p style="color: #FF6B00; font-weight: bold; margin-top: 10px;">
+                    Or visit: https://ayotheg.github.io/welderskit
+                </p>
+            </div>
+            <footer>© 2025 Welders Toolkit</footer>
+        </div>
+    </div>
 
-  <!-- Simple anime/cartoon-style illustration placeholder -->
-  <img src="img/anime-removebg-.png" alt="Anime Welder" class="illustration">
+    <!-- Mobile Content -->
+    <div class="mobile-content">
+        <div class="container-fluid blog-container">
 
-  <h1>Welcome, Welders!</h1>
-  <p>Best experienced on your mobile device</p>
+            <!-- Back Arrow -->
+            <a class="blog-back-arrow" href="customer.html">
+                <i class="bi bi-arrow-left" style="background-color: #FF6B00 !important;"></i>
+            </a>
 
-  <!-- Button to redirect -->
-  <a href="" class="btn">Switch to your mobile device</a>
+            <!-- Blog Header -->
+            <div class="blog-header">
+                <h1 class="blog-title">Customer Resources</h1>
+                <p class="blog-subtitle">Tap on a guide to learn more!</p>
+            </div>
 
-  <footer>© 2025 Welders Toolkit</footer>
-                </div>
-                </div>
-                <!--Do not display-->
+            <!-- Bootstrap Cards Structure Optimized for Theme -->
+            <div class="card-deck d-flex flex-column gap-4">
 
-
-                <!--Mobile Content-->
-                <div class="mobile-content">
-                    <div class="container-fluid">
-
-<!-- Back Arrow -->
-        <a class="arrow" href="customer.html">
-            <i class='bx bxs-left-arrow'></i>
-        </a>
-
-                        <div class="table">
-                            <div class="table-content" id="animate">
-                                <h2>TABLE OF CONTENT</h2>
-                                <ul>
-                                    <li>
-                                        <a href="article5.html" style="color: #FF6B00 !important;">Getting Started on WeldersKit</a>
-                                        <a href="article4.html" style="color: #FF6B00 !important;">Avoiding escrow payments</a>
-                                        <a href="article.html" style="color:#FF6B00 !important;">Detecting welding faults at home</a>
-                                        <a href="article2.html" style="color:#FF6B00 !important;">How to report a suspicious welder</a>
-                                        <a href="article3.html" style="color:#FF6B00 !important;">Tips for hiring welders</a>
-                                    </li>
-                                </ul>
-                            </div>
+                <a href="article5.html" class="text-decoration-none">
+                    <div class="card stylish-card h-100 mb-0">
+                        <img class="card-img-top" src="img/getting-started.jpg" alt="Getting Started">
+                        <div class="card-body">
+                            <h5 class="card-title text-orange">Getting Started on WeldersKit</h5>
+                            <p class="card-text text-light">Learn how to navigate and get the most out of the WeldersKit platform.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center border-orange">
+                            <small class="text-orange d-flex align-items-center gap-2"><i class="bi bi-book-half"></i> Read Guide</small>
+                            <i class="bi bi-arrow-right text-orange"></i>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <!--Tags-->
-                 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js" integrity="sha512-8BkFnMa5pqmphA7XoSbkjP2qX7Gqlkel2C+p1g1AH1tW4cBJs2tumC0Zn9eNRBOKbe3dW9OtbYh/vpkGuZNTMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" ></script>
-         <script src="script.js"></script>
-         <script src="gsap.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <a href="article4.html" class="text-decoration-none">
+                    <div class="card stylish-card h-100 mb-0">
+                        <img class="card-img-top" src="img/escrow payments.jpg" alt="Escrow Payments">
+                        <div class="card-body">
+                            <h5 class="card-title text-orange">Avoiding Escrow Payments</h5>
+                            <p class="card-text text-light">Understand escrow systems and learn strategies to avoid unnecessary payment holds.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center border-orange">
+                            <small class="text-orange d-flex align-items-center gap-2"><i class="bi bi-wallet-fill"></i> Read Guide</small>
+                            <i class="bi bi-arrow-right text-orange"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="article.html" class="text-decoration-none">
+                    <div class="card stylish-card h-100 mb-0">
+                        <img class="card-img-top" src="img/detetcing welding.jpg" alt="Detecting Faults">
+                        <div class="card-body">
+                            <h5 class="card-title text-orange">Detecting Welding Faults at Home</h5>
+                            <p class="card-text text-light">Learn the signs of poor welding quality and how to identify faults in your projects.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center border-orange">
+                            <small class="text-orange d-flex align-items-center gap-2"><i class="bi bi-search"></i> Learn More</small>
+                            <i class="bi bi-arrow-right text-orange"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="article2.html" class="text-decoration-none">
+                    <div class="card stylish-card border-danger h-100 mb-0">
+                        <img class="card-img-top report-img" src="img/report_client.jpg" alt="Report Suspicious">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">How to Report a Suspicious Welder</h5>
+                            <p class="card-text text-light">Stay protected by learning how to identify and report suspicious welders safely.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center border-danger">
+                            <small class="text-danger d-flex align-items-center gap-2"><i class="bi bi-exclamation-triangle-fill"></i> Protect Yourself</small>
+                            <i class="bi bi-arrow-right text-danger"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="article3.html" class="text-decoration-none">
+                    <div class="card stylish-card h-100 mb-0">
+                        <img class="card-img-top" src="img/tips_client.jpg" alt="Hiring Tips">
+                        <div class="card-body">
+                            <h5 class="card-title text-orange">Tips for Hiring Welders</h5>
+                            <p class="card-text text-light">Best practices for finding, vetting, and hiring reliable and skilled welders.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center border-orange">
+                            <small class="text-orange d-flex align-items-center gap-2"><i class="bi bi-person-check"></i> Read Tips</small>
+                            <i class="bi bi-arrow-right text-orange"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script src="gsap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
