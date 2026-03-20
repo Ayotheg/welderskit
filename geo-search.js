@@ -1,51 +1,42 @@
-/**
- * findNearby - Locates shops or services near the user's current location.
- * Optimised for iOS (Apple Maps) and Android (Google Maps).
- */
 function findNearby(query) {
     console.log("Searching for:", query);
-    
+
     // Platform detection
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
     const isAndroid = /Android/.test(userAgent);
 
-    // Function to handle the final URL redirection
     const redirect = (url) => {
-        console.log("Redirecting to:", url);
-        // Using location.href is often more reliable on mobile for app-scheme triggers
+        console.log("Redirecting to Google Maps:", url);
         window.location.href = url;
     };
 
     if (navigator.geolocation) {
-        // Request user permission for location to provide better results
+        // Request current position for pinpoint local results
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
                 
                 let url;
-                if (isIOS) {
-                    // iOS: Apple Maps is the most reliable native scheme
-                    url = `https://maps.apple.com/?ll=${lat},${lng}&q=${encodeURIComponent(query)}`;
-                } else if (isAndroid) {
-                    // Android: Intent-based geo scheme
+                if (isAndroid) {
+                    // Native Android Google Maps Trigger (using coordinates + search)
                     url = `geo:${lat},${lng}?q=${encodeURIComponent(query)}`;
+                } else if (isIOS) {
+                    // Force Google Maps on iOS (uses Universal Link to open app or web)
+                    url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}&center=${lat},${lng}&zoom=15`;
                 } else {
-                    // Desktop/Other: Professional Google Maps Search API
-                    url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+                    // Desktop/General Google Maps API
+                    url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}&center=${lat},${lng}`;
                 }
                 redirect(url);
             },
             (error) => {
-                console.warn("Geolocation permission denied or timed out. Falling back to query-only search.", error);
+                console.warn("GPS Access Denied - Falling back to general query.", error);
                 
+                // Fallback: Still use Google Maps but without precise coordinates
                 let url;
-                if (isIOS) {
-                    // Fallback without coordinates for iOS
-                    url = `https://maps.apple.com/?q=${encodeURIComponent(query)}`;
-                } else if (isAndroid) {
-                    // Fallback without coordinates for Android
+                if (isAndroid) {
                     url = `geo:0,0?q=${encodeURIComponent(query)}`;
                 } else {
                     url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
@@ -59,8 +50,7 @@ function findNearby(query) {
             }
         );
     } else {
-        // Fallback for browsers without Geolocation API
-        const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-        redirect(url);
+        // Direct redirection if Geolocation API is not supported
+        redirect(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`);
     }
 }
