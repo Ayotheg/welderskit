@@ -60,15 +60,31 @@
   .panel.active{opacity:1;pointer-events:auto;}
   .panel h2{margin:0;font-size:1.2rem;color:var(--accent);}
   .panel p{margin:0;color:var(--muted);font-size:0.92rem;}
-  .cta{
-    margin-top:14px;
-    background:var(--accent);
-    color:#000;
-    padding:10px 18px;
-    border-radius:10px;
-    font-weight:700;
-    text-decoration:none;
-    box-shadow: 0 6px 18px rgba(255,107,0,0.18);
+  .cta {
+    margin-top: 20px;
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(255, 107, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    border: 1px solid rgba(255, 107, 0, 0.4);
+    letter-spacing: 0.5px;
+  }
+
+  .cta:hover {
+    transform: translateY(-3px);
+    background: #FF8533;
+    box-shadow: 0 12px 32px rgba(255, 107, 0, 0.4);
+    color: #fff;
+    border-color: #FF8533;
+  }
+
+  .cta:active {
+    transform: translateY(-1px);
   }
 
 
@@ -98,23 +114,50 @@
 
   /* navigation placed under the card */
   .switch {
-    display:flex;
-    gap:20px;
-    margin-top:10px;
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 8px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 
+                inset 0 0 10px rgba(255, 255, 255, 0.05);
   }
-  .switch button{
-    background:transparent;
-    border:2px solid var(--accent);
-    color:#fff;
-    font-weight:600;
-    font-size:1rem;
-    padding:8px 16px;
-    border-radius:30px;
-    cursor:pointer;
-    transition:all 0.3s ease;
+
+  .switch button {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 12px 28px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
-  .switch button:hover{ background:var(--accent); color:#000; }
-  .switch button[disabled]{ opacity:.45; cursor:default }
+
+  .switch button:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .switch button.active {
+    background: linear-gradient(135deg, var(--accent), #ff9a44);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(255, 107, 0, 0.5);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .switch button[disabled] {
+    opacity: .45;
+    cursor: default;
+  }
 </style>
 </head>
 <body>
@@ -155,18 +198,25 @@
   function showPanel(panel){
     welder.classList.remove('active');
     customer.classList.remove('active');
+    btnWelder.classList.remove('active');
+    btnCustomer.classList.remove('active');
     door.style.pointerEvents = 'auto';
 
     if(panel === 'welder'){
+      btnWelder.classList.add('active');
       door.classList.add('open-left');
       door.classList.remove('open-right');
       setTimeout(()=>{ welder.classList.add('active'); door.style.pointerEvents='none'; }, ANIM_MS);
     } else {
+      btnCustomer.classList.add('active');
       door.classList.add('open-right');
       door.classList.remove('open-left');
       setTimeout(()=>{ customer.classList.add('active'); door.style.pointerEvents='none'; }, ANIM_MS);
     }
   }
+
+  // Set initial state
+  btnWelder.classList.add('active');
 
   btnWelder.onclick = ()=> showPanel('welder');
   btnCustomer.onclick = ()=> showPanel('customer');

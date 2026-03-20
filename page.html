@@ -55,7 +55,7 @@
       <!-- Second Row -->
       <div id="menu-grid-main2">
         <div class="menu-grid-2">
-          <div class="grid-items"><i class="bi bi-shop"></i> <h4 class="grid-text"><a href="https://maps.google.com/maps?q=building+materials+shops&ll=6.6150,3.3250" target="_blank" >Stores <br>Near Me</a></h4></div>
+          <div class="grid-items"><i class="bi bi-shop"></i> <h4 class="grid-text"><a href="javascript:void(0)" onclick="findNearby('building materials shops')">Stores <br>Near Me</a></h4></div>
           <div class="grid-items"><i class="bi bi-receipt-cutoff"></i> <h4 class="grid-text"><a href="invoice.html">Invoice</a></h4></div>
         </div>
       </div>
@@ -79,13 +79,31 @@
   </div>
   </div>
 
-  <!-- Floating Chat Button (left side) -->
-  <div id="chatbot-toggle" onclick="toggleChatbot()" title="Chat with us">
-    <i class="bi bi-chat-dots-fill"></i>
+  <!-- Unified Action Hub -->
+  <div class="action-hub" id="action-hub">
+    <div id="hub-trigger" onclick="toggleActionHub()" title="Open Toolkit">
+      <i class="bi bi-plus-lg"></i>
+    </div>
+    <div id="hub-dock">
+      <div class="hub-item" onclick="toggleChatbot()">
+        <i class="bi bi-robot"></i>
+        <span>Assistant</span>
+      </div>
+      <a href="login.html" class="hub-item">
+        <i class="bi bi-person-up"></i>
+        <span>Switch</span>
+      </a>
+    </div>
   </div>
 
   <!-- Chatbot Popup Container -->
   <div id="chatbot-popup" class="chatbot-popup-hidden">
+    <div class="chatbot-header">
+      <span>Welder Assistant</span>
+      <button id="close-chatbot" onclick="toggleChatbot()" title="Minimize">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
     <iframe
       id="chatbot-frame"
       src=""
@@ -102,6 +120,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
   <script src="gsap.js"></script>
+  <script src="geo-search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

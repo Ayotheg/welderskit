@@ -114,6 +114,7 @@ function setLanguage(lang) {
 function toggleChatbot() {
   const popup = document.getElementById("chatbot-popup");
   const frame = document.getElementById("chatbot-frame");
+  const hub = document.getElementById("action-hub");
 
   if (!popup) return;
 
@@ -126,8 +127,18 @@ function toggleChatbot() {
     }
     popup.classList.remove("chatbot-popup-hidden");
     popup.classList.add("chatbot-popup-visible");
+    
+    // Close the hub when opening chat for a cleaner look
+    if (hub) hub.classList.remove("active");
   } else {
     popup.classList.remove("chatbot-popup-visible");
     popup.classList.add("chatbot-popup-hidden");
   }
+}
+
+/* ===== Action Hub Toggle ===== */
+function toggleActionHub() {
+  const hub = document.getElementById("action-hub");
+  if (!hub) return;
+  hub.classList.toggle("active");
 }

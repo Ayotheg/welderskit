@@ -24,6 +24,24 @@ texts.forEach(textObj => {
     }
   });
 });
+const text2 = [
+  { value: "Maraba, Awọn Onibara!", newClass: "text5" },
+  { value: "Nnọọ, Ndị Azụmaahịa!", newClass: "text6" },
+  { value: "Welcome, Customers!", newClass: "text7" }
+];
+
+let tl2 = gsap.timeline({ delay: 1 });
+
+text2.forEach(textObj => {
+  tl2.to("#header2", {
+    duration: 3,
+    text: {
+      value: textObj.value,
+      newClass: textObj.newClass,
+      delimiter: "",
+    }
+  });
+});
 
 gsap.from("#menu-grid-main",{
     delay:1,
