@@ -1,461 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welder Calculator</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Master Welder Calc v2 | Tools & Measurements</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --bg-dark: #070707;
+            --card-glass: rgba(20, 20, 20, 0.85);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
 
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-    body {
-       font-family: "Poppins", sans-serif;
-  font-style: normal;
-      background: #000000;
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(255, 107, 0, 0.05) 0px, transparent 50%),
+                url('img/welding-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* NO SCROLLING */
+            color: var(--text-main);
+        }
 
-    .calculator {
-      width: 280px;
-      margin: 20px auto;
-      padding: 20px;
-      border: 2px solid #FF6B00;
-      border-radius: 15px;
-      background: #f9f9f9;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
+        .mobile-shell {
+            width: 100%;
+            height: 100%;
+            max-width: 420px;
+            max-height: 850px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    .title {
-      text-align: center;
-      color: #000000;
-      margin-bottom: 15px;
-      font-size: 20px;
-      font-weight: bold;
-      font-family: "Poppins", sans-serif;
-    }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
 
-    #display {
-      width: 100%;
-      height: 50px;
-      margin-bottom: 15px;
-      font-size: 24px;
-      text-align: right;
-      padding: 10px;
-      border: 2px solid #FF6B00;
-      border-radius: 8px;
-      background: #fff;
-      box-sizing: border-box;
-    }
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
+        /* --- Calculator Card --- */
+        .calc-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 36px;
+            padding: 20px;
+            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.9);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            max-height: 90vh;
+        }
 
-    button {
-      height: 60px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      background: #eee;
-      border-radius: 8px;
-      transition: all 0.2s;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    }
+        header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        header h1 { font-size: 18px; font-weight: 800; color: var(--primary); margin: 0; }
+        
+        .tool-toggle {
+            background: rgba(255, 107, 0, 0.15);
+            color: var(--primary);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+        .tool-toggle:hover { background: var(--primary); color: #000; }
 
-    button:hover {
-      background: #ddd;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
+        /* --- Display Area --- */
+        .display-area {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: right;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    button:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+        #expression { font-size: 12px; color: var(--primary); font-weight: 600; opacity: 0.8; margin-bottom: 2px; }
+        #display { 
+            font-size: 40px; /* Base size */
+            font-weight: 800; 
+            color: #fff; 
+            line-height: 1;
+            transition: font-size 0.1s ease-out;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
 
-    .operator {
-      background: #FF6B00 !important;
-      color: white;
-    }
+        /* --- Main Logic Container --- */
+        .content-stack { position: relative; width: 100%; min-height: 380px; }
 
-    .operator:hover {
-      background: #e55a00 !important;
-    }
+        /* Standard Grid */
+        .grid-main { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; transition: 0.4s; }
+        
+        /* Measurement Drawer (Navbar overlay) */
+        .grid-tools {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .grid-tools.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-    .equals {
-      background: #4CAF50 !important;
-      color: white;
-    }
+        button {
+            height: 60px;
+            border-radius: 18px;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transition: 0.2s;
+        }
+        button:active { transform: scale(0.92); background: var(--primary); color: #000; }
 
-    .equals:hover {
-      background: #45a049 !important;
-    }
+        .btn-op { color: var(--primary); background: rgba(255, 107, 0, 0.1); font-size: 22px; }
+        .btn-eq { background: var(--primary); color: #000; font-weight: 800; font-size: 24px; }
+        .btn-ac { color: #ff4d4d; background: rgba(255, 77, 77, 0.1); font-size: 14px; font-weight: 800; }
 
-    .clear {
-      background: #f44336 !important;
-      color: white;
-    }
+        /* Measurement Drawer Styles */
+        .tool-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 10px; }
+        .converter-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .conv-btn { 
+            height: 50px; font-size: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .conv-btn i { font-size: 14px; color: var(--primary); }
 
-    .clear:hover {
-      background: #da190b !important;
-    }
+        .fraction-pool { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .frac-btn { font-size: 11px; height: 40px; background: rgba(255, 107, 0, 0.08); border-radius: 10px; }
 
-    .status {
-      margin-top: 10px;
-      padding: 8px;
-      border-radius: 5px;
-      text-align: center;
-      font-size: 14px;
-      min-height: 20px;
-      transition: all 0.3s;
-    }
+        /* Footer Info */
+        footer { margin-top: 15px; text-align: center; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
 
-    .status-success {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-    }
-
-    .status-error {
-      background: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-    }
-
-    .status-info {
-      background: #cce7ff;
-      color: #004085;
-      border: 1px solid #b3d7ff;
-    }
-
-    .status-warning {
-      background: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffeaa7;
-    }
-
-    .api-indicator {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #dc3545;
-      animation: pulse 2s infinite;
-    }
-
-    .api-indicator.connected {
-      background: #28a745;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 20px;
-      color: white;
-      font-size: 14px;
-    }
-  </style>
+    </style>
 </head>
 <body>
-  <div class="calculator">
-    <div class="api-indicator" id="apiIndicator"></div>
-    <div class="title">Welder Calculator</div>
-    
-    <input type="text" id="display" disabled placeholder="0" />
+    <div class="mobile-shell">
+        <div class="top-nav">
+            <a href="page.html" class="back-link"><i class="bi bi-chevron-left"></i> Dashboard</a>
+            <div style="font-size: 10px; color: var(--primary); font-weight: 800;">MASTER WELDER v2.1</div>
+        </div>
 
-    <div class="buttons">
-      <button onclick="appendNumber(7)">7</button>
-      <button onclick="appendNumber(8)">8</button>
-      <button onclick="appendNumber(9)">9</button>
-      <button class="operator" onclick="setOperation('dividir')">÷</button>
+        <div class="calc-card">
+            <header>
+                <h1>Welder Calc</h1>
+                <button class="tool-toggle" id="toggleDrawer">
+                    <i class="bi bi-gear-fill"></i> <span id="toggleText">EXTRAS</span>
+                </button>
+            </header>
 
-      <button onclick="appendNumber(4)">4</button>
-      <button onclick="appendNumber(5)">5</button>
-      <button onclick="appendNumber(6)">6</button>
-      <button class="operator" onclick="setOperation('multiplicar')">×</button>
+            <!-- Adaptive Display -->
+            <div class="display-area">
+                <div id="expression">&nbsp;</div>
+                <div id="display">0</div>
+            </div>
 
-      <button onclick="appendNumber(1)">1</button>
-      <button onclick="appendNumber(2)">2</button>
-      <button onclick="appendNumber(3)">3</button>
-      <button class="operator" onclick="setOperation('restar')">-</button>
+            <div class="content-stack">
+                <!-- Standard Keypad -->
+                <div class="grid-main" id="keypad">
+                    <button class="btn-ac" onclick="clearAll()">AC</button>
+                    <button class="btn-op" onclick="back()"><i class="bi bi-backspace"></i></button>
+                    <button class="btn-op" onclick="op('÷')">÷</button>
+                    <button class="btn-op" onclick="op('×')">×</button>
 
-      <button onclick="appendNumber(0)">0</button>
-      <button onclick="appendDecimal()">.</button>
-      <button class="equals" onclick="calculateResult()">=</button>
-      <button class="operator" onclick="setOperation('sumar')">+</button>
+                    <button onclick="num(7)">7</button>
+                    <button onclick="num(8)">8</button>
+                    <button onclick="num(9)">9</button>
+                    <button class="btn-op" onclick="op('-')">-</button>
 
-      <button class="clear" onclick="clearDisplay()" style="grid-column: span 2;">Clear</button>
-      <button onclick="backspace()" style="grid-column: span 2;">⌫</button>
+                    <button onclick="num(4)">4</button>
+                    <button onclick="num(5)">5</button>
+                    <button onclick="num(6)">6</button>
+                    <button class="btn-op" onclick="op('+')">+</button>
+
+                    <button onclick="num(1)">1</button>
+                    <button onclick="num(2)">2</button>
+                    <button onclick="num(3)">3</button>
+                    <button class="btn-eq" style="grid-row: span 2;" onclick="solve()">=</button>
+
+                    <button style="grid-column: span 2;" onclick="num(0)">0</button>
+                    <button onclick="dot()">.</button>
+                </div>
+
+                <!-- Sliding Measurement Drawer -->
+                <div class="grid-tools" id="drawer">
+                    <div>
+                        <div class="tool-title">Quick Converters</div>
+                        <div class="converter-row">
+                            <button class="conv-btn" onclick="convert('ft_m')"><i class="bi bi-arrows-expand"></i> <span>Ft to M</span></button>
+                            <button class="conv-btn" onclick="convert('in_mm')"><i class="bi bi-rulers"></i> <span>In to mm</span></button>
+                            <button class="conv-btn" onclick="convert('lb_kg')"><i class="bi bi-box-seam"></i> <span>Lb to Kg</span></button>
+                            <button class="conv-btn" onclick="convert('mm_in')"><i class="bi bi-arrow-repeat"></i> <span>mm to In</span></button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="tool-title">Fractions to Decimal</div>
+                        <div class="fraction-pool">
+                            <button class="frac-btn" onclick="frac(0.0625, '1/16')">1/16"</button>
+                            <button class="frac-btn" onclick="frac(0.125, '1/8')">1/8"</button>
+                            <button class="frac-btn" onclick="frac(0.1875, '3/16')">3/16"</button>
+                            <button class="frac-btn" onclick="frac(0.25, '1/4')">1/4"</button>
+                            <button class="frac-btn" onclick="frac(0.375, '3/8')">3/8"</button>
+                            <button class="frac-btn" onclick="frac(0.5, '1/2')">1/2"</button>
+                        </div>
+                    </div>
+                    <button class="btn-util mt-auto" style="width: 100%; background: var(--primary); color: #000; height: 50px;" id="closeDrawer">CLOSE TOOLS</button>
+                </div>
+            </div>
+
+            <footer>High Precision Workshop Utility</footer>
+        </div>
     </div>
 
-    <div class="status" id="status"></div>
-  </div>
+    <script>
+        let current = "";
+        let val1 = 0;
+        let pOp = "";
+        const display = document.getElementById('display');
 
-  <div class="footer">
-    <p>Simple Calculator for Welders </p>
-    <small>Performs quick monetary calculations</small>
-  </div>
+        // Drawer Logic
+        const drawer = document.getElementById('drawer');
+        const toggleBtn = document.getElementById('toggleDrawer');
+        const closeBtn = document.getElementById('closeDrawer');
+        const toggleText = document.getElementById('toggleText');
 
-  <script>
-    // Enhanced Calculator with API Integration
-    let current = "";
-    let firstNum = null;
-    let operation = null;
-    let apiConnected = false;
+        toggleBtn.onclick = () => {
+            drawer.classList.add('active');
+            toggleBtn.style.opacity = "0";
+        };
+        closeBtn.onclick = () => {
+            drawer.classList.remove('active');
+            toggleBtn.style.opacity = "1";
+        };
 
-    const baseURL = "https://calculator-api-o5d2.onrender.com"; // Your API URL
+        // --- Adaptive Font Size Logic ---
+        function updateDisplay() {
+            const text = current || "0";
+            display.innerText = text;
 
-    // Initialize calculator
-    document.addEventListener('DOMContentLoaded', function() {
-      testAPIConnection();
-      showStatus('Calculator ready', 'info');
-    });
-
-    // Test API connection
-    async function testAPIConnection() {
-      try {
-        const response = await fetch(`${baseURL}/test`, {
-          method: 'GET',
-          headers: { 'Accept': 'application/json' }
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          apiConnected = true;
-          document.getElementById('apiIndicator').classList.add('connected');
-          showStatus('API Connected ✅', 'success');
-          console.log('API Status:', data);
-        } else {
-          throw new Error('API not responding');
+            // Simple scaling formula
+            // Normal size is 40px for up to 8 digits
+            // After that, we scale down.
+            let size = 44;
+            if (text.length > 8) {
+                size = Math.max(16, 44 - (text.length - 8) * 3);
+            }
+            display.style.fontSize = size + "px";
         }
-      } catch (error) {
-        apiConnected = false;
-        document.getElementById('apiIndicator').classList.remove('connected');
-        showStatus('API Offline - Using local mode', 'warning');
-        console.warn('API connection failed:', error);
-      }
-    }
 
-    // Clean input to prevent CSS/HTML contamination
-    function cleanInput(value) {
-      let clean = String(value).trim();
-      
-      // Remove any potential CSS/HTML contamination
-      clean = clean.replace(/<[^>]*>/g, ''); // Remove HTML tags
-      clean = clean.replace(/[a-zA-Z-]+:\s*[^;]+[;]?/g, ''); // Remove CSS
-      clean = clean.replace(/width:\s*\d+px[;]?/g, ''); // Remove width CSS specifically
-      clean = clean.replace(/[a-zA-Z]/g, ''); // Remove letters
-      
-      // Keep only numbers, decimal point, and minus sign
-      clean = clean.replace(/[^\d.-]/g, '');
-      
-      return clean || '0';
-    }
-
-    function appendNumber(num) {
-      if (current === "0" && num !== 0) {
-        current = String(num);
-      } else {
-        current += String(num);
-      }
-      updateDisplay();
-    }
-
-    function appendDecimal() {
-      if (current === "") current = "0";
-      if (current.indexOf('.') === -1) {
-        current += '.';
-        updateDisplay();
-      }
-    }
-
-    function setOperation(op) {
-      firstNum = current;
-      current = "";
-      operation = op;
-      if (current === "") return;
-      
-      if (firstNum !== null && operation !== null && current !== "") {
-       document.getElementById("display").value += ` ${op}`;
-        calculateResult();
-      }
-      
-      showStatus(`Selected: ${getOperationSymbol(op)}`, 'info');
-    }
-
-    function getOperationSymbol(op) {
-      const symbols = {
-        'sumar': '+',
-        'restar': '-', 
-        'multiplicar': '×',
-        'dividir': '÷'
-      };
-      return symbols[op] || op;
-    }
-
-    async function calculateResult() {
-      if (!firstNum || !operation || current === "") return;
-
-      const cleanFirstNum = cleanInput(firstNum);
-      const cleanCurrent = cleanInput(current);
-
-      showStatus('Calculating...', 'info');
-
-      try {
-        if (apiConnected) {
-          // Try API call first
-          const url = `${baseURL}/${operation}?num1=${encodeURIComponent(cleanFirstNum)}&num2=${encodeURIComponent(cleanCurrent)}`;
-          console.log('API Call:', url);
-          
-          const response = await fetch(url, {
-            method: 'GET',
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.detail || `API Error: ${response.status}`);
-          }
-
-          const data = await response.json();
-          console.log('API Response:', data);
-
-          if (data.resultado !== undefined) {
-            const result = data.resultado;
-            current = String(result);
+        function num(n) {
+            if (current === "0") current = String(n);
+            else if (current.length < 18) current += String(n);
             updateDisplay();
-            showStatus(`${data.expression || cleanFirstNum + ' ' + getOperationSymbol(operation) + ' ' + cleanCurrent + ' = ' + result}`, 'success');
-          } else {
-            throw new Error("Invalid API response format");
-          }
-        } else {
-          throw new Error("API not available");
         }
-      } catch (apiError) {
-        console.warn('API calculation failed:', apiError);
-        
-        // Fallback to local calculation
-        try {
-          const result = performLocalCalculation(parseFloat(cleanFirstNum), parseFloat(cleanCurrent), operation);
-          current = String(result);
-          updateDisplay();
-          showStatus(`Local: ${cleanFirstNum} ${getOperationSymbol(operation)} ${cleanCurrent} = ${result}`, 'warning');
-        } catch (localError) {
-          console.error('Local calculation failed:', localError);
-          showStatus(`Error: ${localError.message}`, 'error');
-          current = "Error";
-          updateDisplay();
+
+        function dot() {
+            if (!current.includes('.')) {
+                current += current === "" ? "0." : ".";
+                updateDisplay();
+            }
         }
-      }
 
-      firstNum = null;
-      operation = null;
-    }
+        function clearAll() {
+            current = "";
+            val1 = 0;
+            pOp = "";
+            document.getElementById('expression').innerHTML = "&nbsp;";
+            updateDisplay();
+        }
 
-    // Local calculation fallback
-    function performLocalCalculation(num1, num2, op) {
-      switch (op) {
-        case "sumar":
-          return num1 + num2;
-        case "restar":
-          return num1 - num2;
-        case "multiplicar":
-          return num1 * num2;
-        case "dividir":
-          if (num2 === 0) throw new Error("Division by zero");
-          return num1 / num2;
-        default:
-          throw new Error("Unknown operation");
-      }
-    }
+        function back() {
+            current = current.slice(0, -1);
+            updateDisplay();
+        }
 
-    function clearDisplay() {
-      current = "";
-      firstNum = null;
-      operation = null;
-      updateDisplay();
-      showStatus('Cleared', 'info');
-    }
+        function op(o) {
+            if (current === "") return;
+            if (val1 !== 0) solve();
+            val1 = parseFloat(current);
+            pOp = o;
+            document.getElementById('expression').innerText = `${val1} ${o}`;
+            current = "";
+            updateDisplay();
+        }
 
-    function backspace() {
-      if (current.length > 0) {
-        current = current.slice(0, -1);
-        updateDisplay();
-      }
-    }
+        function solve() {
+            if (current === "" || !pOp) return;
+            const n2 = parseFloat(current);
+            let res = 0;
+            if (pOp === '+') res = val1 + n2;
+            else if (pOp === '-') res = val1 - n2;
+            else if (pOp === '×') result = val1 * n2;
+            else if (pOp === '÷') result = val1 / n2;
 
-    function updateDisplay() {
-      const display = document.getElementById("display");
-      display.value = current || "0";
-    }
+            // Handle standard result
+            if (pOp === '×') res = val1 * n2;
+            if (pOp === '÷') res = val1 / n2;
 
-    function showStatus(message, type) {
-      const statusElement = document.getElementById('status');
-      statusElement.textContent = message;
-      statusElement.className = `status status-${type}`;
-      
-      // Auto-hide after 3 seconds for non-error messages
-      if (type !== 'error') {
-        setTimeout(() => {
-          statusElement.textContent = '';
-          statusElement.className = 'status';
-        }, 3000);
-      }
-    }
+            document.getElementById('expression').innerText = `${val1} ${pOp} ${n2} =`;
+            current = String(parseFloat(res.toFixed(8)));
+            val1 = 0;
+            pOp = "";
+            updateDisplay();
+        }
 
-    // Keyboard support
-    document.addEventListener('keydown', function(event) {
-      if (event.key >= '0' && event.key <= '9') {
-        appendNumber(parseInt(event.key));
-      } else if (event.key === '.') {
-        appendDecimal();
-      } else if (event.key === '+') {
-        setOperation('sumar');
-      } else if (event.key === '-') {
-        setOperation('restar');
-      } else if (event.key === '*') {
-        setOperation('multiplicar');
-      } else if (event.key === '/') {
-        event.preventDefault(); // Prevent browser search
-        setOperation('dividir');
-      } else if (event.key === 'Enter' || event.key === '=') {
-        event.preventDefault();
-        calculateResult();
-      } else if (event.key === 'Escape' || event.key === 'c' || event.key === 'C') {
-        clearDisplay();
-      } else if (event.key === 'Backspace') {
-        backspace();
-      }
-    });
+        // --- Measurement Logic ---
+        function convert(type) {
+            if (current === "") return;
+            const v = parseFloat(current);
+            let r = 0; let note = "";
+            if (type === 'ft_m') { r = v * 0.3048; note = `${v} ft → m`; }
+            else if (type === 'in_mm') { r = v * 25.4; note = `${v} in → mm`; }
+            else if (type === 'lb_kg') { r = v * 0.4536; note = `${v} lb → kg`; }
+            else if (type === 'mm_in') { r = v / 25.4; note = `${v} mm → in`; }
+            
+            document.getElementById('expression').innerText = note;
+            current = String(parseFloat(r.toFixed(4)));
+            updateDisplay();
+            drawer.classList.remove('active');
+            toggleBtn.style.opacity = "1";
+        }
 
-    // Retry API connection every 30 seconds if disconnected
-    setInterval(() => {
-      if (!apiConnected) {
-        testAPIConnection();
-      }
-    }, 30000);
-  </script>
+        function frac(val, label) {
+            current = String(val);
+            document.getElementById('expression').innerText = `Fraction: ${label}`;
+            updateDisplay();
+            drawer.classList.remove('active');
+            toggleBtn.style.opacity = "1";
+        }
+    </script>
 </body>
 </html>
-
-
-
-
