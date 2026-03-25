@@ -43,8 +43,8 @@ const CORE_ASSETS = [
   "map.html",
   "pwa.js",
   "manifest.json",
-  "img/icon-192.png",
-  "img/icon-512.png"
+  "img/icon-192x192.png",
+  "img/icon-512x512.png"
 ];
 
 // Install event: cache core assets
