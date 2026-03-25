@@ -6,9 +6,40 @@
     <title>Measurement Tool - Welders Kit</title>
     <link rel="stylesheet" href="ruler.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="redirect.css">
+
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#FF6B00">
+    <link rel="apple-touch-icon" href="img/icon-192.png">
 </head>
 <body>
+
+    <!-- Desktop Message -->
+    <div class="desktop-message">
+        <div class="typewriter">
+            <img src="img/adobe-express-qr-code.png" alt="Anime Welder" class="illustration">
+            <h1>Welcome, Welders!</h1>
+            <p>🔥 Best experienced on your mobile device</p>
+            <p style="color: #999; font-size: 14px; max-width: 400px;">
+                For the best experience, please open this site on your smartphone or scan the QR code above
+            </p>
+            <div class="qr-hint">
+                <p>📱 Scan with your phone:</p>
+                <p style="color: #FF6B00; font-weight: bold; margin-top: 10px;">
+                    Or visit: https://ayotheg.github.io/welderskit
+                </p>
+            </div>
+            <footer>© 2026 Welders Toolkit</footer>
+        </div>
+    </div>
+
+    <div class="mobile-content">
     <div class="container">
+
         <div class="header">
             <h1>Measurement Tool</h1>
             <p>Measure pipes, welding materials & equipment</p>
@@ -87,6 +118,9 @@
         </div>
     </div>
 
+    </div>
+    <script src="script.js"></script>
+    <script src="pwa.js"></script>
     <script src="ruler.js"></script>
     <script src="https://docs.opencv.org/4.8.0/opencv.js"></script>
 </body>

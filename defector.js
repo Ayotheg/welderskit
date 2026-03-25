@@ -149,7 +149,7 @@ async function analyzePhoto() {
         const blob = await response.blob();
 
         const formData = new FormData();
-        formData.append('file', blob, 'captured_image.jpg');
+        formData.append('file', blob, 'captured_image.jpg')
 
         // Send to API
         const apiResponse = await fetch(backendDetectUrl, {
